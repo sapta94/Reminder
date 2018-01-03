@@ -1,5 +1,7 @@
 const mongoose = require('mongoose')
 const User = mongoose.model('Users')
+const passport = require('passport')
+, LocalStrategy = require('passport-local').Strategy;
 
 
 module.exports = function(app){
@@ -29,4 +31,10 @@ module.exports = function(app){
             message:'success'
         })
     })
+
+    app.post('/login',
+    passport.authenticate('local', { successRedirect: '/',
+                                     failureRedirect: '/login',
+                                     failureFlash: true })
+  );
 }
