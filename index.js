@@ -5,7 +5,7 @@ const config = require('./config')
 
 require('./models/User');
 // require('./models/Survey');
-// require('./services/passport');
+ require('./services/passport');
 mongoose.connect(config.mongoUri)
 const app = express();
 
