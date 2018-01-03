@@ -1,15 +1,16 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const mongoose = require('mongoose')
+const config = require('./config')
 
-// require('./models/User');
+require('./models/User');
 // require('./models/Survey');
 // require('./services/passport');
-
-
-
+mongoose.connect(config.mongoUri)
 const app = express();
 
-app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended:true}))
+app.use(bodyParser.json()) 
 
 if (process.env.NODE_ENV === 'production') {
   // Express will serve up production assets
