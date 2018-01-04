@@ -3,6 +3,16 @@ const User = mongoose.model('Users')
 const passport = require('passport')
 , LocalStrategy = require('passport-local').Strategy;
 
+passport.serializeUser(function(user,done){
+  done(null,user.id)
+})
+
+passport.deserializeUser(function(id,done){
+  User.findById(id).then(function(user){
+    done(null,user)
+  })
+})
+
 passport.use(new LocalStrategy(
 function(username, password, done) {
   User.findOne({ UserID: username }, function(err, user) {
@@ -10,7 +20,7 @@ function(username, password, done) {
     if (!user) {
       return done(null, false, { message: 'Incorrect username.' });
     }
-    if (!user.validPassword(password)) {
+    if (!user.validPassword(username,password)) {
       return done(null, false, { message: 'Incorrect password.' });
     }
     return done(null, user);

@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose')
+var passport = require('passport')
 const config = require('./config')
 
 require('./models/User');
@@ -11,6 +12,8 @@ const app = express();
 
 app.use(bodyParser.urlencoded({ extended:true}))
 app.use(bodyParser.json()) 
+app.use(passport.initialize());
+app.use(passport.session());
 
 require('./routes/register-user')(app)
 if (process.env.NODE_ENV === 'production') {
