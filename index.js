@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose')
 var passport = require('passport')
 const config = require('./config')
+const flash=require("connect-flash");
 
 require('./models/User');
 // require('./models/Survey');
@@ -12,6 +13,7 @@ const app = express();
 
 app.use(bodyParser.urlencoded({ extended:true}))
 app.use(bodyParser.json()) 
+app.use(flash())
 app.use(passport.initialize());
 app.use(passport.session());
 

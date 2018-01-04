@@ -20,7 +20,8 @@ function(username, password, done) {
     if (!user) {
       return done(null, false, { message: 'Incorrect username.' });
     }
-    if (!user.validPassword(username,password)) {
+    if (user.validPassword(username,password)) {
+      console.log('Incomplete password')
       return done(null, false, { message: 'Incorrect password.' });
     }
     return done(null, user);
