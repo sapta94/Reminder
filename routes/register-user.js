@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
 const User = mongoose.model('Users')
+const bcrypt = require('bcryptjs')
 const passport = require('passport')
 , LocalStrategy = require('passport-local').Strategy;
 
@@ -18,10 +19,11 @@ module.exports = function(app){
         } 
         else
             return
+        var hash = bcrypt.hashSync(password, 10);
         const user = await new User({
             FirstName:firstName,
             LastName:lastName,
-            Password:password,
+            Password:hash,
             UserID:'USER'+userID
         }).save();
 
