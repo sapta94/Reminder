@@ -14,17 +14,18 @@ passport.deserializeUser(function(id,done){
 })
 
 passport.use(new LocalStrategy(
-function(username, password, done) {
-  User.findOne({ UserID: username }, function(err, user) {
-    if (err) { return done(err); }
+async function(username, password, done) {
+ var user = await User.findOne({ UserID: username })
+
     if (!user) {
       return done(null, false, { message: 'Incorrect username.' });
     }
-    if (user.validPassword(username,password)) {
+
+    var returnVal=await user.validPassword(username,password)
+    if (!returnVal) {
       console.log('Incomplete password')
       return done(null, false, { message: 'Incorrect password.' });
     }
     return done(null, user);
-  });
 }
 ));
