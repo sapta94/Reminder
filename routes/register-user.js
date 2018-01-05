@@ -39,4 +39,13 @@ module.exports = function(app){
                                      failureRedirect: '/fail',
                                      failureFlash: true })
   );
+
+  app.get('/logout',function(req,res){
+    console.log('logout')
+    req.logout();
+    //res.redirect('/');
+    res.json({
+        message:'Logged Out'
+    })
+  })
 }
