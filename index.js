@@ -7,6 +7,7 @@ const flash=require("connect-flash");
 const cookieSession = require('cookie-session')
 
 require('./models/User');
+require('./models/Notification');
 // require('./models/Survey');
  require('./services/passport');
 mongoose.connect(config.mongoUri)
@@ -28,6 +29,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 require('./routes/register-user')(app)
+require('./routes/notify-insert')(app)
 if (process.env.NODE_ENV === 'production') {
   // Express will serve up production assets
   // like our main.js file, or main.css file!
