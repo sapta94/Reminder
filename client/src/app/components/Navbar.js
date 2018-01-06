@@ -34,4 +34,8 @@ class Navbar extends React.Component{
         )
     }
 }
-export default Navbar; 
+function mapStateToProps({ auth }) {   
+    return { auth };   
+  }
+  
+export default connect(mapStateToProps)(Navbar); 
