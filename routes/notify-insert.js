@@ -33,4 +33,24 @@ module.exports = function(app){
         return
 
     })
+
+
+    app.get('/fetch/noti',requireUser,async function(req,res){
+        var userID=req.query.userID||null;
+
+        var notification=await Notification.find({UserID:userID});
+
+        if(!notification){
+            res.json({
+                status:200,
+                messgae:'fail'
+            })
+            return
+        }
+
+        res.json({
+            data:notification,
+            message:'success'
+        })
+    })
 }
