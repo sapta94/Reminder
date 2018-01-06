@@ -7,7 +7,7 @@ const passport = require('passport')
 
 module.exports = function(app){
     /** API to register users */
-    app.post('/register',async function(req,res){
+    app.post('/api/register',async function(req,res){
         var firstName = req.body.firstName||null;
         var lastName = req.body.lastName||null;
         var password = req.body.password||null;
@@ -34,13 +34,13 @@ module.exports = function(app){
         })
     })
 
-    app.post('/login',
+    app.post('/api/login',
     passport.authenticate('local', { successRedirect:'/suc',
                                      failureRedirect: '/fail',
                                      failureFlash: true })
   );
 
-  app.get('/logout',function(req,res){
+  app.get('/api/logout',function(req,res){
     console.log('logout')
     req.logout();
     //res.redirect('/');

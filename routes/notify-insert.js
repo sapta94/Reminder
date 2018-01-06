@@ -3,7 +3,7 @@ const Notification = mongoose.model('Notification')
 const requireUser = require('./requireUser')
 
 module.exports = function(app){
-    app.post('/insert/noti',requireUser,async function(req,res){
+    app.post('/api/insert/noti',requireUser,async function(req,res){
         var userID = req.body.userID||null
         var title = req.body.title||null
         var description=req.body.description||null
@@ -35,7 +35,7 @@ module.exports = function(app){
     })
 
 
-    app.get('/fetch/noti',requireUser,async function(req,res){
+    app.get('/api/fetch/noti',requireUser,async function(req,res){
         var userID=req.query.userID||null;
 
         var notification=await Notification.find({UserID:userID});

@@ -13,6 +13,15 @@
     "sass:watch": "chokidar src/scss/*.scss -c \"npm run sass:build\"",    
     "dev": "npm-run-all -p sass:*"
   },
+  "private": true,
+  "proxy": {
+    "/auth/*": {
+      "target": "http://localhost:5000"
+    },
+    "/api/*": {
+      "target": "http://localhost:5000"
+    }
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/sapta94/MySite.git"
