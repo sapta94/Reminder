@@ -5,7 +5,7 @@ import * as actions from '../actions'
 
 import Navbar from './Navbar'
 //import Dashboard from './Dashboard'
-//import Landing from './Landing'
+import Landing from './Landing'
 //import SurveyNew from './Surveys/SurveyNew'
 const Dashboard = () => <h2>Dashboard</h2>
 const ReminderNew = () => <h2>Reminder New</h2>

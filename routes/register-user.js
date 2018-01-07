@@ -48,4 +48,9 @@ module.exports = function(app){
         message:'Logged Out'
     })
   })
+
+  app.get('/api/currentUser',function(req,res){
+    //console.log(req.user)
+    res.send(req.user)
+  })
 }
