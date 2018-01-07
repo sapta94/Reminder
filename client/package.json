@@ -10,7 +10,7 @@
     "build-task:scss-compile": "node-sass-chokidar --source-map true src/scss/ -o dist/css",
     "build-task:autoprefixer": "postcss dist/css/*.css --use autoprefixer -d dist/css",
     "sass:build": "npm-run-all -p build-task:*",
-    "sass:watch": "chokidar src/scss/*.scss -c \"npm run sass:build\"",    
+    "sass:watch": "chokidar src/scss/*.scss -c \"npm run sass:build\"",
     "dev": "npm-run-all -p sass:*"
   },
   "private": true,
@@ -37,8 +37,12 @@
   },
   "homepage": "https://github.com/sapta94/MySite#readme",
   "dependencies": {
+    "materialize-css": "^0.100.2",
     "react": "^16.2.0",
-    "react-dom": "^16.2.0"
+    "react-dom": "^16.2.0",
+    "react-redux": "^5.0.6",
+    "react-router-dom": "^4.2.2",
+    "redux-thunk": "^2.2.0"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.6",
