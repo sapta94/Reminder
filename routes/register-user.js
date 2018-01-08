@@ -35,8 +35,8 @@ module.exports = function(app){
     })
 
     app.post('/api/login',
-    passport.authenticate('local', { successRedirect:'/suc',
-                                     failureRedirect: '/fail',
+    passport.authenticate('local', { successRedirect:'/',
+                                     failureRedirect: '/dashboard',
                                      failureFlash: true })
   );
 
