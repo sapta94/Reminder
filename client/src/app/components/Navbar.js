@@ -12,7 +12,7 @@ class Navbar extends React.Component{
                     </div>
                 );
             case false:
-                return <li><a href="/auth/google">Click to Login</a></li>
+                return <li><Link to='/login'>Click to Login</Link></li>
             default:
                 return [
                 <li key="1">Go to Dashboard</li>,
