@@ -35,8 +35,8 @@ module.exports = function(app){
     })
 
     app.post('/api/login',
-    passport.authenticate('local', { successRedirect:'/',
-                                     failureRedirect: '/dashboard',
+    passport.authenticate('local', { successRedirect:'/api/success',
+                                     failureRedirect: '/api/fail',
                                      failureFlash: true })
   );
 
@@ -47,6 +47,12 @@ module.exports = function(app){
     res.json({
         message:'Logged Out'
     })
+  })
+
+  app.get('/api/success',function(req,res){
+      res.send({
+          message:'success'
+      })
   })
 
   app.get('/api/currentUser',function(req,res){
