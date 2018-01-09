@@ -1,5 +1,6 @@
 import axios from 'axios'
 import {FETCH_USER} from './types'
+import {VALID_USER} from './types'
 
 export const fetchUser = () => {
 
@@ -15,7 +16,7 @@ export const loginUser = (username,password) => {
             username: username,
             password: password
           })
-        dispatch({type: FETCH_USER,payload:res.data})
+        dispatch({type: 'VALID_USER',payload:res.data})
     }
 }
 
