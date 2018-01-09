@@ -4,6 +4,13 @@ import {connect} from 'react-redux'
 
 class Login extends Component{
 
+    constructor(props){
+        super(props);
+        this.state={
+            userData:''
+        }
+    }
+
     // callLogin(userID,password){
     //     console.log('login called')
     //     this.props.loginUser(userID,password)
