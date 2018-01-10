@@ -7,8 +7,24 @@ class Login extends Component{
     constructor(props){
         super(props);
         this.state={
-            userData:''
+            username:'',
+            password:''
         }
+        this.handleChange = this.handleChange.bind(this)
+    }
+
+    handleChange(tag,value){
+        if(tag=='username') {
+            this.setState = {
+                username:value
+            }
+        }
+        if(tag=='password'){
+            this.setState ={
+                password:value
+            }
+        }
+        console.log('val is '+value)
     }
 
     // callLogin(userID,password){
@@ -22,7 +38,7 @@ class Login extends Component{
                 <form className="col s12">
                     <div className="row">
                         <div className="input-field col s6">
-                            <input  id="first_name" type="text" className="validate" />
+                            <input  onChange={()=>this.handleChange('username',this.value)} id="first_name" type="text" className="validate" />
                             <label for="first_name">User ID</label>
                         </div>
                         <div className="input-field col s6">
@@ -30,7 +46,7 @@ class Login extends Component{
                             <label for="last_name">Password</label>
                         </div>
                     </div>
-                    <a onClick={()=> this.props.loginUser('USER2','superman')} className="waves-effect waves-light btn">Login</a>
+                    <a onClick={()=> this.props.loginUser(this.state.username,this.state.password)} className="waves-effect waves-light btn">Login</a>
                 </form>
             </div>
         )
