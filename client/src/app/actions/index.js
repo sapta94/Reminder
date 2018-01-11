@@ -11,6 +11,7 @@ export const fetchUser = () => {
 }
 
 export const loginUser = (username,password) => {
+    console.log(username+'******'+password)
     return async function(dispatch){
         const res = await axios.post('http://localhost:5000/api/login', {
             username: username,

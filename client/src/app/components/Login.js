@@ -10,22 +10,22 @@ class Login extends Component{
             username:'',
             password:''
         }
-        this.handleChange = this.handleChange.bind(this)
     }
 
-    handleChange(tag,value){
+    handleChange(tag,event){
         if(tag=='username') {
             this.setState = {
-                username:value
+                username:event.target.value
             }
         }
         if(tag=='password'){
             this.setState ={
-                password:value
+                password:event.target.value
             }
         }
         console.log('val is '+value)
     }
+
 
     // callLogin(userID,password){
     //     console.log('login called')
@@ -38,11 +38,11 @@ class Login extends Component{
                 <form className="col s12">
                     <div className="row">
                         <div className="input-field col s6">
-                            <input  onChange={()=>this.handleChange('username',this.value)} id="first_name" type="text" className="validate" />
+                            <input  onChange={()=>this.handleChange.bind(this,"username")} id="first_name" type="text" className="validate" />
                             <label for="first_name">User ID</label>
                         </div>
                         <div className="input-field col s6">
-                            <input id="last_name" type="text" className="validate" />
+                            <input onChange={()=>this.handleChange.bind(this,"password")} id="last_name" type="text" className="validate" />
                             <label for="last_name">Password</label>
                         </div>
                     </div>
