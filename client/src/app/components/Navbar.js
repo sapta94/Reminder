@@ -15,7 +15,7 @@ class Navbar extends React.Component{
                 return <li><Link to='/login'>Click to Login</Link></li>
             default:
                 return [
-                <li key="1">Go to Dashboard</li>,
+                <li key="1">My Reminders</li>,
                 <li key="3" style={{"margin":"0 10px"}}>Add a reminder</li>,
                 <li key="2"><a href="/auth/logout">Logout</a></li>
             ]
