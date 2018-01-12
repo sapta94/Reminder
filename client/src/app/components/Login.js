@@ -15,15 +15,17 @@ class Login extends Component{
         this.handleSubmit=this.handleSubmit.bind(this)
     }
 
+    componentDidMount(){
+        console.log(this.props.auth)
+    }
+
     handleChange(e) {
         const { name, value } = e.target;
         this.setState({ [name]: value });
-        console.log(this.state.username)
     }
 
     handleSubmit(e) {
         e.preventDefault();
-
         this.setState({ submitted: true });
         const { username, password } = this.state;
         if (username && password) {
