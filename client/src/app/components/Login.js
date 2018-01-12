@@ -7,23 +7,28 @@ class Login extends Component{
     constructor(props){
         super(props);
         this.state={
-            username:'',
-            password:''
+            username:'m',
+            password:'s',
+            submitted:false
         }
+        this.handleChange=this.handleChange.bind(this)
+        this.handleSubmit=this.handleSubmit.bind(this)
     }
 
-    handleChange(tag,event){
-        if(tag=='username') {
-            this.setState = {
-                username:event.target.value
-            }
+    handleChange(e) {
+        const { name, value } = e.target;
+        this.setState({ [name]: value });
+        console.log(this.state.username)
+    }
+
+    handleSubmit(e) {
+        e.preventDefault();
+
+        this.setState({ submitted: true });
+        const { username, password } = this.state;
+        if (username && password) {
+            this.props.loginUser(username, password);
         }
-        if(tag=='password'){
-            this.setState ={
-                password:event.target.value
-            }
-        }
-        console.log('val is '+value)
     }
 
 
@@ -38,15 +43,15 @@ class Login extends Component{
                 <form className="col s12">
                     <div className="row">
                         <div className="input-field col s6">
-                            <input  onChange={()=>this.handleChange.bind(this,"username")} id="first_name" type="text" className="validate" />
+                            <input  onChange={this.handleChange} name="username" type="text" className="validate" />
                             <label for="first_name">User ID</label>
                         </div>
                         <div className="input-field col s6">
-                            <input onChange={()=>this.handleChange.bind(this,"password")} id="last_name" type="text" className="validate" />
+                            <input onChange={this.handleChange} name="password" type="text" className="validate" />
                             <label for="last_name">Password</label>
                         </div>
                     </div>
-                    <a onClick={()=> this.props.loginUser(this.state.username,this.state.password)} className="waves-effect waves-light btn">Login</a>
+                    <a onClick={this.handleSubmit} className="waves-effect waves-light btn">Login</a>
                 </form>
             </div>
         )
