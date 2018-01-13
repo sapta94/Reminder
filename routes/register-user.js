@@ -8,8 +8,8 @@ const passport = require('passport')
 module.exports = function(app){
     /** API to register users */
     app.post('/api/register',async function(req,res){
-        var firstName = req.body.firstName||null;
-        var lastName = req.body.lastName||null;
+        var firstName = req.body.firstname||null;
+        var lastName = req.body.lastname||null;
         var password = req.body.password||null;
 
         const existingUser = await User.find().sort({_id:-1}).limit(1);
@@ -51,7 +51,8 @@ module.exports = function(app){
 
   app.get('/api/success',function(req,res){
       res.send({
-          message:'success'
+          message:'success',
+          data:req.user
       })
   })
 
