@@ -6,6 +6,7 @@ import * as actions from '../actions'
 import Navbar from './Navbar'
 import Login from './Login'
 import Landing from './Landing'
+import Register from './Register'
 //import SurveyNew from './Surveys/SurveyNew'
 const Dashboard = () => <h2>Dashboard</h2>
 const ReminderNew = () => <h2>Reminder New</h2>
@@ -25,6 +26,7 @@ class App extends Component{
                         <Route exact path="/login" component={Login} />
                         <Route exact path="/reminders" component={Dashboard} />
                         <Route exact path="/reminder/new" component={ReminderNew} />
+                        <Route exact path="/register" component={Register} />
                     </div>
             </BrowserRouter>
             </div>
