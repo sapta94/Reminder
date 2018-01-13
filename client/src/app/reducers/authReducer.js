@@ -6,7 +6,7 @@ export default function (state=null,action) {
         case 'VALID_USER':
             console.log(action.payload)
             if(action.payload.message=='success'){
-                window.location.href='/reminders'
+                //window.location.href='/reminders'
             }
             return action.payload||false
 
