@@ -29,9 +29,10 @@ class Register extends Component{
     handleSubmit(e) {
         e.preventDefault();
         this.setState({ submitted: true });
-        const { username, password } = this.state;
-        if (username && password) {
-            this.props.loginUser(username, password);
+        const { firstname, lastname, password } = this.state;
+        console.log(firstname+' '+lastname)
+        if (firstname && lastname && password) {
+            this.props.registerUser(firstname, lastname, password);
         }
     }
 
@@ -51,7 +52,7 @@ class Register extends Component{
                             <label for="first_name">First Name</label>
                         </div>
                         <div className="input-field col s6">
-                            <input onChange={this.handleChange} name="middlename" type="text" className="validate" />
+                            <input onChange={this.handleChange} name="lastname" type="text" className="validate" />
                             <label for="last_name">Last Name</label>
                         </div>
                         <div className="input-field col s6">
