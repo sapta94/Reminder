@@ -5,9 +5,9 @@ export default function (state=null,action) {
     switch(action.type){
         case 'VALID_USER':
             console.log(action.payload)
-            if(action.payload.message=='success'){
-                window.location.href='/reminders'
-            }
+            // if(action.payload.message=='success'){
+            //     window.location.href='/reminders'
+            // }
             return action.payload||false
 
         case FETCH_USER:

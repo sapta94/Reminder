@@ -17,6 +17,7 @@ class Notification extends Component{
     }
 
     componentDidMount(){
+        this.props.fetchUser();
         console.log(this.props.auth)
     }
 
@@ -71,4 +72,4 @@ function mapStateToProps({ auth }) {
     return { auth };   
   }
 
-export default connect (null,actions)(Notification);
+export default connect (mapStateToProps,actions)(Notification);
