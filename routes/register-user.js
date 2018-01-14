@@ -50,6 +50,7 @@ module.exports = function(app){
   })
 
   app.get('/api/success',function(req,res){
+      res.redirect('http://localhost:8081/reminder/new')
       res.send({
           message:'success',
           data:req.user
