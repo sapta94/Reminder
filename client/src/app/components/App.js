@@ -9,7 +9,7 @@ import Landing from './Landing'
 import Register from './Register'
 //import SurveyNew from './Surveys/SurveyNew'
 const Dashboard = () => <h2>Dashboard</h2>
-const ReminderNew = () => <h2>Reminder New</h2>
+import Notification from './Notification'
 
 class App extends Component{
     componentDidMount(){
@@ -25,7 +25,7 @@ class App extends Component{
                         <Route exact path="/" component={Landing} />
                         <Route exact path="/login" component={Login} />
                         <Route exact path="/reminders" component={Dashboard} />
-                        <Route exact path="/reminder/new" component={ReminderNew} />
+                        <Route exact path="/reminder/new" component={Notification} />
                         <Route exact path="/register" component={Register} />
                     </div>
             </BrowserRouter>
