@@ -4,6 +4,7 @@ const passport = require('passport')
 , LocalStrategy = require('passport-local').Strategy;
 
 passport.serializeUser(function(user,done){
+  console.log('user '+user.id)
   done(null,user.id)
 })
 
