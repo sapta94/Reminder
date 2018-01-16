@@ -25,6 +25,7 @@ app.use(function(req, res, next) {
 
 app.use(
   cookieSession({
+       name:'my-cookie',
        maxAge: 30*24*24*60*60*1000,
        keys: [config.cookieKey]
    })

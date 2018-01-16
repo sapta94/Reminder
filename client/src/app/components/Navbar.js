@@ -16,7 +16,7 @@ class Navbar extends React.Component{
             default:
                 return [
                 <li key="1">My Reminders</li>,
-                <li key="3" style={{"margin":"0 10px"}}>Add a reminder</li>,
+                <li key="3" style={{"margin":"0 10px"}}><Link to="reminder/new">Add a reminder</Link></li>,
                 <li key="2"><a href="/auth/logout">Logout</a></li>
             ]
         }
