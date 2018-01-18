@@ -32,3 +32,11 @@ export const registerUser=(firstname,lastname,password) => {
     }
 }
 
+export const fetchNoti = (userid) => {
+    
+        return async function(dispatch){
+            const res = await axios.get('http://localhost:5000/api/fetch/noti?userID='+userid)
+            dispatch({type: 'FETCH_NOTI',payload:res.data})
+        }
+    }
+
