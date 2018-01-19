@@ -14,7 +14,6 @@ import Notification from './Notification'
 class App extends Component{
     componentDidMount(){
         this.props.fetchUser();
-        this.props.fetchNoti('USER2')
     }
 
     render() {
