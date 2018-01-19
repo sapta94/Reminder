@@ -4,6 +4,7 @@ import {Link} from 'react-router-dom'
 
 class Navbar extends React.Component{
     renderContent(){
+        //console.log(this.props.noti)
         switch(this.props.auth){
             case null:
                 return (
@@ -38,8 +39,8 @@ class Navbar extends React.Component{
         )
     }
 }
-function mapStateToProps({ auth }) {   
-    return { auth };   
+function mapStateToProps({ auth,noti }) {   
+    return { auth,noti };   
   }
   
 export default connect(mapStateToProps)(Navbar); 
