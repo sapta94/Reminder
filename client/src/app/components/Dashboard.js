@@ -1,12 +1,14 @@
 import React,{Component} from 'react'
 import * as actions from '../actions'
 import {connect} from 'react-redux'
+var moment = require('moment')
 
 class Section extends Component{
     constructor(props){
         super(props)
     }
     render(){
+        var dateString = moment.unix(parseInt(this.props.time)).format("DD/MM/YY");
         return(
             <div class="row">
                 <div class="col s12 m6">
@@ -16,7 +18,7 @@ class Section extends Component{
                     <p>{this.props.desc}</p>
                     </div>
                     <div class="card-action">
-                    <a href="#">{this.props.time}</a>
+                    <a href="#">{dateString}</a>
                     <a href="#">Edit</a>
                     </div>
                 </div>
@@ -37,7 +39,7 @@ class Dashboard extends Component{
         if(notify!=null){
             console.log(notify.data)
             return(
-                <Section title={notify.data[0].Title} desc={notify.data[0].Description} time={notify.data[0].createTime}/>
+                <Section title={notify.data[0].Title} desc={notify.data[0].Description} time={notify.data[0].CreateTime}/>
             )
         }
         return(
