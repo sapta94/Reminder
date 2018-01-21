@@ -27,19 +27,33 @@ module.exports = function(app){
             UserID:'USER'+userID
         }).save();
 
-        console.log(user)
+        //console.log(user)
         res.json({
             status:200,
             message:'success'
         })
     })
 
-    app.post('/api/login',
-    passport.authenticate('local', { successRedirect:'/api/success',
-                                     failureRedirect: '/api/fail',
-                                     session:true,
-                                     failureFlash: true })
-  );
+    app.post('/api/login',function(req,res,next){
+        passport.authenticate('local', function(err, user) {
+            if (err) {
+                return next(err); // Error 500
+            }
+
+            if (!user) {
+                //Authentication failed
+                return res.json(401, { "error": err }); 
+            }
+            //Authentication successful
+            req.user=user;
+            req.login(user, function(err) {
+                if (err) { return next(err); }
+                return res.redirect('/api/success');
+            });
+
+            //res.send(200);
+        })(req, res, next)
+    });
 
   app.get('/api/logout',function(req,res){
     console.log('logout')
@@ -52,6 +66,7 @@ module.exports = function(app){
 
   app.get('/api/success',function(req,res){
       //res.redirect('http://localhost:8081/reminder/new')
+      console.log('user is '+req.session.user)
       res.send({
           message:'success',
           data:req.user
@@ -60,6 +75,6 @@ module.exports = function(app){
 
   app.get('/api/currentUser',function(req,res){
     console.log('user is '+req.user)
-    res.send(req.user)
+    res.send(req.session.user)
   })
 }
