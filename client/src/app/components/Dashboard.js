@@ -8,7 +8,7 @@ class Section extends Component{
         super(props)
     }
     render(){
-        var dateString = moment.unix(parseInt(this.props.time)).format("DD/MM/YY");
+        var dateString = moment.unix(parseInt(this.props.time)/1000).format("DD/MM/YY");
         return(
             <div class="row">
                 <div class="col s12 m6">
