@@ -13,15 +13,17 @@ require('./models/Notification');
 mongoose.connect(config.mongoUri)
 const app = express();
 
-app.use(bodyParser.urlencoded({ extended:true}))
-app.use(bodyParser.json()) 
-
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   res.header('Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS');
   next();
 });
+
+app.use(bodyParser.urlencoded({ extended:true}))
+app.use(bodyParser.json()) 
+
+
 
 app.use(
   cookieSession({
@@ -31,9 +33,9 @@ app.use(
    })
 )
 
-app.use(flash())
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(flash())
 
 require('./routes/register-user')(app)
 require('./routes/notify-insert')(app)
