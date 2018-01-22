@@ -49,7 +49,7 @@ class Login extends Component{
                             <label for="first_name">User ID</label>
                         </div>
                         <div className="input-field col s6">
-                            <input onChange={this.handleChange} name="password" type="text" className="validate" />
+                            <input onChange={this.handleChange} name="password" type="password" className="validate" />
                             <label for="last_name">Password</label>
                         </div>
                     </div>

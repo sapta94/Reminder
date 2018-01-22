@@ -29,7 +29,11 @@ class Register extends Component{
     handleSubmit(e) {
         e.preventDefault();
         this.setState({ submitted: true });
-        const { firstname, lastname, password } = this.state;
+        const { firstname, lastname, password,confirm } = this.state;
+        if(password!=confirm){
+            alert('password and confirm password does not match')
+            return
+        }
         console.log(firstname+' '+lastname)
         if (firstname && lastname && password) {
             this.props.registerUser(firstname, lastname, password);
@@ -56,11 +60,11 @@ class Register extends Component{
                             <label for="last_name">Last Name</label>
                         </div>
                         <div className="input-field col s6">
-                            <input onChange={this.handleChange} name="password" type="text" className="validate" />
+                            <input onChange={this.handleChange} name="password" type="password" className="validate" />
                             <label for="last_name">Password</label>
                         </div>
                         <div className="input-field col s6">
-                            <input onChange={this.handleChange} name="confirm" type="text" className="validate" />
+                            <input onChange={this.handleChange} name="confirm" type="password" className="validate" />
                             <label for="last_name">Confirm Password</label>
                         </div>
                     </div>
