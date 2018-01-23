@@ -3,17 +3,6 @@ const User = mongoose.model('Users')
 const passport = require('passport')
 , LocalStrategy = require('passport-local').Strategy;
 
-passport.serializeUser(function(user,done){
-  console.log('user '+user.id)
-  done(null,user.id)
-})
-
-passport.deserializeUser(function(id,done){
-  User.findById(id).then(function(user){
-    done(null,user)
-  })
-})
-
 passport.use(new LocalStrategy(
 async function(username, password, done) {
  var user = await User.findOne({ UserID: username })
@@ -30,3 +19,14 @@ async function(username, password, done) {
     return done(null, user);
 }
 ));
+
+passport.serializeUser(function(user,done){
+  console.log('user '+user.id)
+  done(null,user.id)
+})
+
+passport.deserializeUser(function(id,done){
+  User.findById(id).then(function(user){
+    done(null,user)
+  })
+})

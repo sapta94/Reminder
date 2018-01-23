@@ -27,32 +27,24 @@ module.exports = function(app){
             UserID:'USER'+userID
         }).save();
 
-        //console.log(user)
-        res.json({
-            status:200,
-            message:'success'
+        req.login(user,function(err){
+            res.redirect('http://localhost:8080/reminders')
         })
+
+        //console.log(user)
+        // res.json({
+        //     status:200,
+        //     message:'success'
+        // })
     })
 
-    app.post('/api/login',function(req,res,next){
-        passport.authenticate('local', function(err, user) {
-            if (err) {
-                return next(err); // Error 500
-            }
-
-            if (!user) {
-                //Authentication failed
-                return res.json(401, { "error": err }); 
-            }
-            //Authentication successful
-            req.user=user;
-            req.login(user, function(err) {
-                if (err) { return next(err); }
-                return res.redirect('/api/success');
-            });
-
-            //res.send(200);
-        })(req, res, next)
+    app.post('/api/login', 
+    passport.authenticate('local', { failureRedirect: '/login' }),
+    function(req, res) {
+      res.send({
+          message:'success',
+          data:req.user
+      });
     });
 
   app.get('/api/logout',function(req,res){
@@ -75,6 +67,6 @@ module.exports = function(app){
 
   app.get('/api/currentUser',function(req,res){
     console.log('user is '+req.user)
-    res.send(req.session.user)
+    res.send(req.user)
   })
 }

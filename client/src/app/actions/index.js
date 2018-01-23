@@ -13,10 +13,18 @@ export const fetchUser = () => {
 export const loginUser = (username,password) => {
     console.log(username+'******'+password)
     return async function(dispatch){
-        const res = await axios.post('http://localhost:5000/api/login', {
-            username: username,
-            password: password
-          })
+        const res = await axios({
+                    method: 'post',
+                    url: 'http://localhost:5000/api/login',
+                    crossDomain: true,
+                    data: {
+                        username: username,
+                        password: password
+                    },
+                    xhrFields: {
+                        withCredentials: true
+                    }
+                });
         dispatch({type: 'VALID_USER',payload:res.data})
     }
 }

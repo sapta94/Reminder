@@ -5,6 +5,7 @@ var passport = require('passport')
 const config = require('./config')
 const flash=require("connect-flash");
 const cookieSession = require('cookie-session')
+const session = require('express-session')
 
 require('./models/User');
 require('./models/Notification');
@@ -17,21 +18,22 @@ app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   res.header('Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS');
+  res.header("Access-Control-Allow-Credentials: true")
   next();
 });
 
+app.use(require('cookie-parser')());
 app.use(bodyParser.urlencoded({ extended:true}))
 app.use(bodyParser.json()) 
 
 
-
-app.use(
-  cookieSession({
-       name:'my-cookie',
-       maxAge: 30*24*24*60*60*1000,
-       keys: [config.cookieKey]
-   })
-)
+app.set('trust proxy', 1)
+app.use(session({
+  secret: 'wetenkdjfrio',
+  resave: false,
+  saveUninitialized: false
+  //cookie: { secure: true }
+}))
 
 app.use(passport.initialize());
 app.use(passport.session());
