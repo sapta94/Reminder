@@ -27,13 +27,23 @@ app.use(bodyParser.urlencoded({ extended:true}))
 app.use(bodyParser.json()) 
 
 
-app.set('trust proxy', 1)
-app.use(session({
-  secret: 'wetenkdjfrio',
-  resave: false,
-  saveUninitialized: false
-  //cookie: { secure: true }
-}))
+// app.set('trust proxy', 1)
+// app.use(session({
+//   secret: 'wetenkdjfrio',
+//   resave: false,
+//   saveUninitialized: true,
+//   cookie: { domain:'http://localhost:8081'}
+//   //cookie: { secure: true }
+// }))
+
+app.use(
+  cookieSession({
+      name:'my-cookie',
+       maxAge: 30*24*24*60*60*1000,
+       cookie: { domain:'.localhost:8081'},
+       keys: [config.cookieKey]
+   })
+)
 
 app.use(passport.initialize());
 app.use(passport.session());
