@@ -1,11 +1,15 @@
 import React,{Component} from 'react'
 import * as actions from '../actions'
 import {connect} from 'react-redux'
+import {Link} from 'react-router-dom'
 var moment = require('moment')
 
 class Section extends Component{
     constructor(props){
         super(props)
+    }
+    handleClick(){
+        window.location.href="/reminder/new?title="+this.props.title
     }
     render(){
         var dateString = moment.unix(parseInt(this.props.time)/1000).format("DD/MM/YY");
@@ -19,7 +23,7 @@ class Section extends Component{
                     </div>
                     <div class="card-action">
                     <a href="#">{dateString}</a>
-                    <a href="#">Edit</a>
+                    <a onClick={this.handleClick}>Edit</a>
                     </div>
                 </div>
                 </div>
