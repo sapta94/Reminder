@@ -36,6 +36,9 @@ class Notification extends Component{
         }
     }
 
+    getQueryString(key){
+        return decodeURIComponent(window.location.search.replace(new RegExp("^(?:.*[&\\?]" + encodeURIComponent(key).replace(/[\.\+\*]/g, "\\$&") + "(?:\\=([^&]*))?)?.*$", "i"), "$1"));
+    }
 
     // callLogin(userID,password){
     //     console.log('login called')
@@ -44,20 +47,23 @@ class Notification extends Component{
 
     render(){
         var user = this.props.fetchUser();
+        var prevTitle=this.getQueryString('title')||''
+        var prevDesc=this.getQueryString('description')||''
+        var prevNotifyTime=this.getQueryString('notifyTime')||''
         return(
             <div className="row">
                 <form className="col s12">
                     <div className="row">
                         <div className="input-field col s4">
-                            <input  onChange={this.handleChange} name="title" type="text" className="validate" />
+                            <input  onChange={this.handleChange} name="title" type="text" value={prevTitle} className="validate" />
                             <label for="first_name">Title</label>
                         </div>
                         <div className="input-field col s8">
-                            <input onChange={this.handleChange} name="description" type="text" className="validate" />
+                            <input onChange={this.handleChange} name="description" value={prevDesc} type="text" className="validate" />
                             <label for="last_name">Description</label>
                         </div>
                         <div className="input-field col s6">
-                            <input onChange={this.handleChange} name="notifyTime" type="date" className="validate" />
+                            <input onChange={this.handleChange} name="notifyTime" value={prevNotifyTime} type="date" className="validate" />
                             <label for="last_name">Date & Time</label>
                         </div>
                     </div>

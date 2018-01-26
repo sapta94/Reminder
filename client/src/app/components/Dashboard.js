@@ -7,9 +7,11 @@ var moment = require('moment')
 class Section extends Component{
     constructor(props){
         super(props)
+
+        this.handleClick = this.handleClick.bind(this);
     }
     handleClick(){
-        window.location.href="/reminder/new?title="+this.props.title
+        window.location.href="/reminder/new?title="+this.props.title+"&description="+this.props.desc
     }
     render(){
         var dateString = moment.unix(parseInt(this.props.time)/1000).format("DD/MM/YY");
