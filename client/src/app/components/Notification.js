@@ -1,6 +1,7 @@
 import React,{Component} from 'react'
 import * as actions from '../actions'
 import {connect} from 'react-redux'
+var moment = require('moment')
 
 class Notification extends Component{
 
@@ -49,7 +50,9 @@ class Notification extends Component{
         var user = this.props.fetchUser();
         var prevTitle=this.getQueryString('title')||''
         var prevDesc=this.getQueryString('description')||''
-        var prevNotifyTime=this.getQueryString('notifyTime')||''
+        var prevNotifyTime=parseInt(this.getQueryString('notifyTime'))||''
+        console.log(prevNotifyTime)
+        var dateStr= moment.unix((prevNotifyTime)/1000).format("YYYY-MM-DD");
         return(
             <div className="row">
                 <form className="col s12">
@@ -63,7 +66,7 @@ class Notification extends Component{
                             <label for="last_name">Description</label>
                         </div>
                         <div className="input-field col s6">
-                            <input onChange={this.handleChange} name="notifyTime" value={prevNotifyTime} type="date" className="validate" />
+                            <input onChange={this.handleChange} name="notifyTime" value={dateStr} type="date" className="validate" />
                             <label for="last_name">Date & Time</label>
                         </div>
                     </div>
