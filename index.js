@@ -40,7 +40,6 @@ app.use(
   cookieSession({
       name:'my-cookie',
        maxAge: 30*24*24*60*60*1000,
-       cookie: { domain:'.localhost:8081'},
        keys: [config.cookieKey]
    })
 )
