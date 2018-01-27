@@ -32,9 +32,9 @@ class Notification extends Component{
         this.setState({ submitted: true });
         const { title, description, notifyTime } = this.state;
         console.log(title+' '+description)
-        // if (firstname && lastname && password) {
-        //     this.props.registerUser(firstname, lastname, password);
-        // }
+         if (title && description && notifyTime) {
+             this.props.insertNoti(firstname, lastname, password);
+         }
     }
 
     getQueryString(key){

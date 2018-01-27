@@ -5,7 +5,7 @@ var ObjectID = require('mongodb').ObjectID;
 
 module.exports = function(app){
     app.post('/api/insert/noti',requireUser,async function(req,res){
-        var userID = req.body.userID||null
+        var userID = req.user.userID||null
         var title = req.body.title||null
         var description=req.body.description||null
         var createTime=Date.now()||null

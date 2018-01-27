@@ -48,3 +48,22 @@ export const fetchNoti = (userid) => {
         }
     }
 
+export const insertNoti = ( title, description, notifyTime) => {
+    return async function(dispatch){
+        const res = await axios({
+                        method: 'post',
+                        url: '/api/insert/noti',
+                        crossDomain: true,
+                        data: {
+                            title: title,
+                            description: description,
+                            notifyTime:notifyTime
+                        },
+                        xhrFields: {
+                            withCredentials: true
+                        }
+                    });
+        dispatch({type: 'INSER_NOTI',payload:res.data})
+    }
+}
+
