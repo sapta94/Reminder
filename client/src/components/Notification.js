@@ -47,7 +47,6 @@ class Notification extends Component{
     // }
 
     render(){
-        var user = this.props.fetchUser();
         var prevTitle=this.getQueryString('title')||''
         var prevDesc=this.getQueryString('description')||''
         var prevNotifyTime=parseInt(this.getQueryString('notifyTime'))||''
