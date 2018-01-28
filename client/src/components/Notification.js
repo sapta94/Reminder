@@ -16,6 +16,7 @@ class Notification extends Component{
         this.handleChange=this.handleChange.bind(this)
         this.handleSubmit=this.handleSubmit.bind(this)
         this.renderEditValues=this.renderEditValues.bind(this)
+        this.handleUpdate=this.handleUpdate.bind(this)
     }
 
     componentDidMount(){
@@ -36,6 +37,16 @@ class Notification extends Component{
         console.log(title+' '+description)
          if (title && description && notifyTime) {
              this.props.insertNoti(title, description, new Date(notifyTime).getTime());
+         }
+    }
+
+    handleUpdate(e) {
+        e.preventDefault();
+        this.setState({ submitted: true });
+        const { title, description, notifyTime } = this.state;
+        console.log(title+' '+description)
+         if (title && description && notifyTime) {
+             this.props.updateNoti(title, description, new Date(notifyTime).getTime());
          }
     }
 
@@ -62,7 +73,13 @@ class Notification extends Component{
     // }
 
     render(){
-        
+        var update=this.getQueryString('update')||null;
+        if(update){
+            var displayBtn= <a onClick={this.handleUpdate} className="waves-effect waves-light btn">Update</a>
+        }
+        else{
+           var displayBtn= <a onClick={this.handleSubmit} className="waves-effect waves-light btn">Set Reminder</a>
+        }
         return(
             <div className="row">
                 <form className="col s12">
@@ -80,7 +97,7 @@ class Notification extends Component{
                             <label for="notifyTime">Date & Time</label>
                         </div>
                     </div>
-                    <a onClick={this.handleSubmit} className="waves-effect waves-light btn">Set Reminder</a>
+                    {displayBtn}
                 </form>
             </div>
         )

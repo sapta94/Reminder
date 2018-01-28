@@ -11,7 +11,7 @@ class Section extends Component{
         this.handleClick = this.handleClick.bind(this);
     }
     handleClick(){
-        window.location.href="/reminder/new?title="+this.props.title+"&description="+this.props.desc+"&notifyTime="+this.props.time;
+        window.location.href="/reminder/new?title="+this.props.title+"&description="+this.props.desc+"&notifyTime="+this.props.time+"&update=1";
     }
     render(){
         var dateString = moment.unix(parseInt(this.props.time)/1000).format("DD/MM/YY");
