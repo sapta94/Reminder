@@ -17,7 +17,7 @@ class Section extends Component{
         var dateString = moment.unix(parseInt(this.props.time)/1000).format("DD/MM/YY");
         return(
             <div class="row">
-                <div class="col s12 m6">
+                <div class="col s6 m6">
                 <div class="card blue-grey darken-1">
                     <div class="card-content white-text">
                     <span class="card-title">{this.props.title}</span>
@@ -43,9 +43,13 @@ class Dashboard extends Component{
     render(){
         const notify=this.props.noti;
         if(notify!=null){
-            console.log(notify.data)
-            return(
-                <Section title={notify.data[0].Title} desc={notify.data[0].Description} time={notify.data[0].CreateTime}/>
+            //console.log(notify.data)
+            var resData = notify.data;
+            console.log(resData)
+            return( 
+                resData.map(function(element,index) {
+                    return <Section title={element.Title} desc={element.Description} time={element.CreateTime}/>
+                }) 
             )
         }
         return(
