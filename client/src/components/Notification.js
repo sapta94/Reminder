@@ -33,7 +33,7 @@ class Notification extends Component{
         const { title, description, notifyTime } = this.state;
         console.log(title+' '+description)
          if (title && description && notifyTime) {
-             this.props.insertNoti(firstname, lastname, password);
+             this.props.insertNoti(title, description, new Date(notifyTime).getTime());
          }
     }
 
@@ -57,15 +57,15 @@ class Notification extends Component{
                 <form className="col s12">
                     <div className="row">
                         <div className="input-field col s4">
-                            <input  onChange={this.handleChange} name="title" type="text" value={prevTitle} className="validate" />
+                            <input  onChange={this.handleChange} name="title" type="text"  className="validate" />
                             <label for="first_name">Title</label>
                         </div>
                         <div className="input-field col s8">
-                            <input onChange={this.handleChange} name="description" value={prevDesc} type="text" className="validate" />
+                            <input onChange={this.handleChange} name="description"  type="text" className="validate" />
                             <label for="last_name">Description</label>
                         </div>
                         <div className="input-field col s6">
-                            <input onChange={this.handleChange} name="notifyTime" value={dateStr} type="date" className="validate" />
+                            <input onChange={this.handleChange} name="notifyTime"  type="date" className="validate" />
                             <label for="last_name">Date & Time</label>
                         </div>
                     </div>
