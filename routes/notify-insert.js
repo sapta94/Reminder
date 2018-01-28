@@ -55,7 +55,7 @@ module.exports = function(app){
         })
     })
 
-    app.post('/update/noti',async function(req,res){
+    app.post('/api/update/noti',async function(req,res){
         var notiID = req.body.notiID||null
         var title = req.body.title||null
         var description=req.body.description||null
