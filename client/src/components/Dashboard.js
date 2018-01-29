@@ -19,14 +19,14 @@ class Section extends Component{
     render(){
         var dateString = moment.unix(parseInt(this.props.time)/1000).format("DD/MM/YY");
         return(
-            <div class="row">
-                <div class="col s6 m6">
-                <div class="card blue-grey darken-1">
-                    <div class="card-content white-text">
-                    <span class="card-title">{this.props.title}</span>
+            <div className="row">
+                <div className="col s6 m6">
+                <div className="card blue-grey darken-1">
+                    <div className="card-content white-text">
+                    <span className="card-title">{this.props.title}</span>
                     <p>{this.props.desc}</p>
                     </div>
-                    <div class="card-action">
+                    <div className="card-action">
                     <a href="#">{dateString}</a>
                     <a onClick={this.handleClick}>Edit</a>
                     </div>
@@ -52,7 +52,7 @@ class Dashboard extends Component{
             console.log(resData)
             return( 
                 resData.map(function(element,index) {
-                    return <Section title={element.Title} desc={element.Description} time={element.CreateTime}/>
+                    return <Section key={index} title={element.Title} desc={element.Description} time={element.CreateTime}/>
                 }) 
             )
         }

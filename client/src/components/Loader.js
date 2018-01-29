@@ -6,7 +6,7 @@ class Loader extends Component{
     }
     render(){
         return(
-            <div style={{visibility:this.props.visible}}>
+            <div style={{visibility:this.props.visible,backgroundColor:'white'}}>
                 <div className="preloader-wrapper big active">
                     <div className="spinner-layer spinner-blue-only">
                     <div className="circle-clipper left">
