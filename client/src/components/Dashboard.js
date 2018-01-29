@@ -2,12 +2,15 @@ import React,{Component} from 'react'
 import * as actions from '../actions'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
+import Loader from './Loader'
 var moment = require('moment')
 
 class Section extends Component{
     constructor(props){
         super(props)
-
+        this.state={
+            loaderVisible:true
+        }
         this.handleClick = this.handleClick.bind(this);
     }
     handleClick(){
@@ -44,6 +47,7 @@ class Dashboard extends Component{
         const notify=this.props.noti;
         if(notify!=null){
             //console.log(notify.data)
+            <Loader visible={false} />
             var resData = notify.data;
             console.log(resData)
             return( 
@@ -53,9 +57,12 @@ class Dashboard extends Component{
             )
         }
         return(
-            <div style={{textAlign:'center'}}>
-                Dashboard
-            </div>
+                
+                <div style={{textAlign:'center'}}>
+                    <Loader visible={true} />
+                    Dashboard
+                </div>
+            
         )
     }
 }
