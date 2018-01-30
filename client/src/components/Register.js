@@ -1,6 +1,7 @@
 import React,{Component} from 'react'
 import * as actions from '../actions'
 import {connect} from 'react-redux'
+import Loader from './Loader'
 
 class Register extends Component{
 
@@ -47,6 +48,11 @@ class Register extends Component{
     // }
 
     render(){
+        if(this.state.submitted){
+            var loader= <Loader visible={'visible'} />
+        }
+        else
+            var loader=<Loader visible={'hidden'} />
         return(
             <div className="row">
                 <form className="col s12">
@@ -70,6 +76,7 @@ class Register extends Component{
                     </div>
                     <a onClick={this.handleSubmit} className="waves-effect waves-light btn">Register</a>
                 </form>
+                {loader}
             </div>
         )
     }
