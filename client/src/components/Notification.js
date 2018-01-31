@@ -1,6 +1,7 @@
 import React,{Component} from 'react'
 import * as actions from '../actions'
 import {connect} from 'react-redux'
+import Loader from './Loader'
 var moment = require('moment')
 
 class Notification extends Component{
@@ -63,7 +64,7 @@ class Notification extends Component{
         this.setState({
             title:prevTitle,
             description:prevDesc,
-            notifyTime:prevNotifyTime
+            notifyTime:dateStr
         })
     }
 
@@ -74,6 +75,11 @@ class Notification extends Component{
 
     render(){
         var update=this.getQueryString('update')||null;
+        if(this.state.submitted){
+            var loader= <Loader visible={'visible'} />
+        }
+        else
+            var loader=<Loader visible={'hidden'} />
         if(update){
             var displayBtn= <a onClick={this.handleUpdate} className="waves-effect waves-light btn">Update</a>
         }
@@ -98,6 +104,7 @@ class Notification extends Component{
                         </div>
                     </div>
                     {displayBtn}
+                    {loader}
                 </form>
             </div>
         )

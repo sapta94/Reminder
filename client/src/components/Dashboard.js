@@ -58,7 +58,7 @@ class Dashboard extends Component{
         }
         return(
                 
-                <div style={{textAlign:'center'}}>
+                <div style={{textAlign:'center',marginTop:'30%'}}>
                     <Loader visible={true} />
                     Dashboard
                 </div>
