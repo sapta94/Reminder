@@ -37,7 +37,7 @@ module.exports = function(app){
 
 
     app.get('/api/fetch/noti',async function(req,res){
-        var userID=req.query.userID||null;
+        var userID=req.user.UserID||null;
 
         var notification=await Notification.find({UserID:userID});
 

@@ -27,15 +27,11 @@ module.exports = function(app){
             UserID:'USER'+userID
         }).save();
 
-        req.login(user,function(err){
-            res.redirect('http://localhost:8080/reminders')
-        })
-
         //console.log(user)
-        // res.json({
-        //     status:200,
-        //     message:'success'
-        // })
+        res.json({
+            status:200,
+            message:'success'
+        })
     })
 
     app.post('/api/login', 
@@ -50,10 +46,10 @@ module.exports = function(app){
   app.get('/api/logout',function(req,res){
     console.log('logout')
     req.logout();
-    //res.redirect('/');
-    res.json({
-        message:'Logged Out'
-    })
+    res.redirect('/');
+    // res.json({
+    //     message:'Logged Out'
+    // })
   })
 
   app.get('/api/success',function(req,res){
