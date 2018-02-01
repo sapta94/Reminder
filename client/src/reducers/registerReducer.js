@@ -9,6 +9,13 @@ export default function (state=null,action) {
              }
             return action.payload||false
 
+        case 'LOGIN':
+             console.log(action.payload)
+             if(action.payload.message=='success'){
+                window.location.href="/reminders"
+            }
+           return action.payload||false
+
         default :
             return state
     }

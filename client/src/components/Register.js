@@ -49,10 +49,13 @@ class Register extends Component{
 
     render(){
         if(this.state.submitted){
-            var loader= <Loader visible={'visible'} />
+            var btn = <div><a className="btn disabled">Submitting..</a><i class="fa fa-spinner fa-spin" style={{fontSize:'24px'}}></i></div>
+            
+            //var loader= <Loader visible={'visible'} />
         }
         else
-            var loader=<Loader visible={'hidden'} />
+            var btn =  <a onClick={this.handleSubmit} className="waves-effect waves-light btn">Register</a>
+            //var loader=<Loader visible={'hidden'} />
         return(
             <div className="row">
                 <form className="col s12">
@@ -74,9 +77,9 @@ class Register extends Component{
                             <label for="last_name">Confirm Password</label>
                         </div>
                     </div>
-                    <a onClick={this.handleSubmit} className="waves-effect waves-light btn">Register</a>
+                    {btn}
                 </form>
-                {loader}
+    
             </div>
         )
     }

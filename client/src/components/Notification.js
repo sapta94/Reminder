@@ -12,6 +12,7 @@ class Notification extends Component{
             title:'',
             description:'',
             notifyTime:'',
+            notiID:null,
             submitted:false
         }
         this.handleChange=this.handleChange.bind(this)
@@ -44,10 +45,10 @@ class Notification extends Component{
     handleUpdate(e) {
         e.preventDefault();
         this.setState({ submitted: true });
-        const { title, description, notifyTime } = this.state;
+        const { title, description, notifyTime, notiID } = this.state;
         console.log(title+' '+description)
          if (title && description && notifyTime) {
-             this.props.updateNoti(title, description, new Date(notifyTime).getTime());
+             this.props.updateNoti(title,notiID, description, new Date(notifyTime).getTime());
          }
     }
 
@@ -58,10 +59,12 @@ class Notification extends Component{
     renderEditValues(){
         var prevTitle=this.getQueryString('title')||''
         var prevDesc=this.getQueryString('description')||''
+        var notiID = this.getQueryString('notiID')||''
         var prevNotifyTime=parseInt(this.getQueryString('notifyTime'))||''
         console.log(prevNotifyTime)
         var dateStr= moment.unix((prevNotifyTime)/1000).format("YYYY-MM-DD");
         this.setState({
+            notiID:notiID,
             title:prevTitle,
             description:prevDesc,
             notifyTime:dateStr

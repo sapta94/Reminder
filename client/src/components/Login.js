@@ -40,6 +40,13 @@ class Login extends Component{
     // }
 
     render(){
+        if(this.state.submitted){
+            var btn = <div><a className="btn disabled">Signing in..</a><i class="fa fa-spinner fa-spin" style={{fontSize:'24px'}}></i></div>
+            
+            //var loader= <Loader visible={'visible'} />
+        }
+        else
+            var btn =  <a onClick={this.handleSubmit} className="waves-effect waves-light btn">Sign In</a>
         return(
             <div className="row">
                 <form className="col s12">
@@ -53,7 +60,7 @@ class Login extends Component{
                             <label for="last_name">Password</label>
                         </div>
                     </div>
-                    <a onClick={this.handleSubmit} className="waves-effect waves-light btn">Login</a>
+                    {btn}
                 </form>
             </div>
         )

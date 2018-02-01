@@ -14,7 +14,7 @@ class Section extends Component{
         this.handleClick = this.handleClick.bind(this);
     }
     handleClick(){
-        window.location.href="/reminder/new?title="+this.props.title+"&description="+this.props.desc+"&notifyTime="+this.props.time+"&update=1";
+        window.location.href="/reminder/new?title="+this.props.title+"&description="+this.props.desc+"&notifyTime="+this.props.time+"&notiID="+this.props.notiID+"&update=1";
     }
     render(){
         var dateString = moment.unix(parseInt(this.props.time)/1000).format("DD/MM/YY");
@@ -39,7 +39,7 @@ class Section extends Component{
 
 class Dashboard extends Component{
     componentWillMount(){
-        this.props.fetchNoti('USER2')
+        this.props.fetchNoti()
         //console.log(this.props.noti)
     }
 
@@ -52,7 +52,7 @@ class Dashboard extends Component{
             console.log(resData)
             return( 
                 resData.map(function(element,index) {
-                    return <Section key={index} title={element.Title} desc={element.Description} time={element.CreateTime}/>
+                    return <Section key={index} notiID={element._id} title={element.Title} desc={element.Description} time={element.CreateTime}/>
                 }) 
             )
         }
