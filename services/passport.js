@@ -5,7 +5,7 @@ const passport = require('passport')
 
 passport.use(new LocalStrategy(
 async function(username, password, done) {
- var user = await User.findOne({ UserID: username })
+ var user = await User.findOne({ Email: username })
 
     if (!user) {
       return done(null, false, { message: 'Incorrect username.' });
