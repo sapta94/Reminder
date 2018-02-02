@@ -50,10 +50,15 @@ class Dashboard extends Component{
             <Loader visible={false} />
             var resData = notify.data;
             console.log(resData)
-            return( 
-                resData.map(function(element,index) {
-                    return <Section key={index} notiID={element._id} title={element.Title} desc={element.Description} time={element.CreateTime}/>
-                }) 
+            return(
+                <div> 
+                    Name: {this.props.auth.FirstName+' '+this.props.auth.LastName}
+                {
+                    resData.map(function(element,index) {
+                        return <Section key={index} notiID={element._id} title={element.Title} desc={element.Description} time={element.CreateTime}/>
+                    }) 
+                }
+                </div> 
             )
         }
         return(
