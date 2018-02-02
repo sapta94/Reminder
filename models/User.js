@@ -6,13 +6,14 @@ const userSchema = new Schema({
     FirstName: String,
     LastName: String,
     UserID: String,
-    Password: String
+    Password: String,
+    Email: String
 });
 
 var User = mongoose.model('User',userSchema)
-userSchema.methods.validPassword= async function(userID,pass){
+userSchema.methods.validPassword= async function(emailID,pass){
     
-      var getUser=await User.findOne({UserID:userID});
+      var getUser=await User.findOne({Email:emailID});
       console.log(getUser)
       var flag=bcrypt.compareSync(pass, getUser.Password);
 
