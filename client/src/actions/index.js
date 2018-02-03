@@ -29,12 +29,13 @@ export const loginUser = (username,password) => {
     }
 }
 
-export const registerUser=(firstname,lastname,password) => {
+export const registerUser=(firstname,lastname,password,email) => {
     return async function(dispatch){
         const res = await axios.post('/api/register', {
             firstname: firstname,
             lastname:lastname,
-            password: password
+            password: password,
+            email:email
           })
         dispatch({type: 'REGISTER_USER',payload:res.data})
     }

@@ -10,6 +10,7 @@ class Register extends Component{
         this.state={
             firstname:null,
             lastname:null,
+            email:null,
             password:'',
             confirm:null,
             submitted:false
@@ -30,14 +31,14 @@ class Register extends Component{
     handleSubmit(e) {
         e.preventDefault();
         this.setState({ submitted: true });
-        const { firstname, lastname, password,confirm } = this.state;
+        const { firstname, lastname, password,confirm,email } = this.state;
         if(password!=confirm){
             alert('password and confirm password does not match')
             return
         }
         console.log(firstname+' '+lastname)
         if (firstname && lastname && password) {
-            this.props.registerUser(firstname, lastname, password);
+            this.props.registerUser(firstname, lastname, password,email);
         }
     }
 
@@ -60,13 +61,17 @@ class Register extends Component{
             <div className="row">
                 <form className="col s12">
                     <div className="row">
-                        <div className="input-field col s6">
+                        <div className="input-field col s4">
                             <input  onChange={this.handleChange} name="firstname" type="text" className="validate" />
                             <label for="first_name">First Name</label>
                         </div>
-                        <div className="input-field col s6">
+                        <div className="input-field col s4">
                             <input onChange={this.handleChange} name="lastname" type="text" className="validate" />
                             <label for="last_name">Last Name</label>
+                        </div>
+                        <div className="input-field col s4">
+                            <input onChange={this.handleChange} name="email" type="text" className="validate" />
+                            <label for="email">Email</label>
                         </div>
                         <div className="input-field col s6">
                             <input onChange={this.handleChange} name="password" type="password" className="validate" />
