@@ -11,6 +11,7 @@ module.exports = function(app){
         var firstName = req.body.firstname||null;
         var lastName = req.body.lastname||null;
         var password = req.body.password||null;
+        var email = req.body.email||null;
 
         const existingUser = await User.find().sort({_id:-1}).limit(1);
         if(existingUser){
@@ -23,6 +24,7 @@ module.exports = function(app){
         const user = await new User({
             FirstName:firstName,
             LastName:lastName,
+            Email:email,
             Password:hash,
             UserID:'USER'+userID
         }).save();
