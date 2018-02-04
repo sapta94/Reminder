@@ -29,7 +29,7 @@ class Navbar extends React.Component{
                 <div className="nav-wrapper">
                     <Link to={this.props.auth?'/survey':'/'}
                         className="left brand-logo">
-                        Emaily
+                        RemindMe
                     </Link>
                     <ul className="right">
                        {this.renderContent()}

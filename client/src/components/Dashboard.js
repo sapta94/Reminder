@@ -55,7 +55,7 @@ class Dashboard extends Component{
                     Name: {this.props.auth.FirstName+' '+this.props.auth.LastName}
                 {
                     resData.map(function(element,index) {
-                        return <Section key={index} notiID={element._id} title={element.Title} desc={element.Description} time={element.CreateTime}/>
+                        return <Section key={index} notiID={element._id} title={element.Title} desc={element.Description} time={element.NotifyTime}/>
                     }) 
                 }
                 </div> 
