@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
 const User = mongoose.model('Users')
+const Profile=mongoose.model('Profile')
 const bcrypt = require('bcryptjs')
 const passport = require('passport')
 , LocalStrategy = require('passport-local').Strategy;
@@ -67,4 +68,25 @@ module.exports = function(app){
     console.log('user is '+req.user)
     res.send(req.user)
   })
+
+  app.post('/api/photo',async function(req,res){
+    var newItem = new Profile({
+        UserID:'USER2'
+    });
+    newItem.img.data = fs.readFileSync(req.files.userPhoto.path)
+    newItem.img.contentType = 'image/png';
+    var result=await newItem.save();
+    if(result){
+        res.json({
+            status:200,
+            message:'success'
+        })
+    }
+    else{
+        res.json({
+            status:200,
+            message:'fail'
+        })
+    }
+   });
 }

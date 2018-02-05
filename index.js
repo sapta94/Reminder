@@ -6,8 +6,10 @@ const config = require('./config')
 const flash=require("connect-flash");
 const cookieSession = require('cookie-session')
 const session = require('express-session')
+const multer = require('multer')
 
 require('./models/User');
+require('./models/Profile');
 require('./models/Notification');
 // require('./models/Survey');
  require('./services/passport');
@@ -47,6 +49,12 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash())
+
+app.use(multer({ dest: './uploads/',
+  rename: function (fieldname, filename) {
+    return filename;
+  },
+ }).any());
 
 require('./routes/register-user')(app)
 require('./routes/notify-insert')(app)
