@@ -52,6 +52,7 @@ class Dashboard extends Component{
             console.log(resData)
             return(
                 <div> 
+                    <br/>
                    <span className="nameHolder"> Welcome {this.props.auth.FirstName+' '+this.props.auth.LastName} </span>
                 {
                     resData.map(function(element,index) {

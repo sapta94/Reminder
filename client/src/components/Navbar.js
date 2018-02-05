@@ -13,7 +13,10 @@ class Navbar extends React.Component{
                     </div>
                 );
             case false:
-                return <li><Link to='/login'>Click to Login</Link></li>
+                return [
+                    <li key="1"><Link to='/register'>Register</Link></li>,
+                    <li key="2"><Link to='/login'>Click to Login</Link></li>
+                ]
             default:
                 return [
                 <li key="1"><Link to="/reminders">My Reminders</Link></li>,
