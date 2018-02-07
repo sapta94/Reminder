@@ -2,6 +2,7 @@ const mongoose = require('mongoose')
 const User = mongoose.model('Users')
 const Profile=mongoose.model('Profile')
 const bcrypt = require('bcryptjs')
+const fs = require('fs')
 const passport = require('passport')
 , LocalStrategy = require('passport-local').Strategy;
 
@@ -73,7 +74,8 @@ module.exports = function(app){
     var newItem = new Profile({
         UserID:'USER2'
     });
-    newItem.img.data = fs.readFileSync(req.files.userPhoto.path)
+    console.log(typeof req.files[0].path)
+    newItem.img.data = fs.readFileSync(req.files[0].path)
     newItem.img.contentType = 'image/png';
     var result=await newItem.save();
     if(result){
