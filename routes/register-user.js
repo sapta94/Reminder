@@ -91,4 +91,23 @@ module.exports = function(app){
         })
     }
    });
+
+   app.get('/fetch/photo',async function(req,res){
+       var userID='USER2';
+       var result = await Profile.findOne({UserID:userID})
+
+       if(result){
+           res.json({
+               status:200,
+               data:result
+           })
+       }
+       else{
+        res.json({
+            status:200,
+            data:[]
+        }) 
+       }
+
+   })
 }
