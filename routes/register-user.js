@@ -97,9 +97,10 @@ module.exports = function(app){
        var result = await Profile.findOne({UserID:userID})
 
        if(result){
+           var base64 = (result.img.data.toString('base64'));
            res.json({
                status:200,
-               data:result
+               data:base64
            })
        }
        else{
