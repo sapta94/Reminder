@@ -3,7 +3,7 @@ import * as actions from '../actions'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import Loader from './Loader'
-import Image from 'react-image';
+import Image from 'react-image-file';
 var moment = require('moment')
 
 class Section extends Component{
@@ -41,11 +41,13 @@ class Section extends Component{
 class Dashboard extends Component{
     componentWillMount(){
         this.props.fetchNoti()
+        this.props.profileImg()
         //console.log(this.props.noti)
     }
 
     render(){
         const notify=this.props.noti;
+        const proPic=this.props.proPic;
         if(notify!=null){
             //console.log(notify.data)
             <Loader visible={false} />
@@ -56,7 +58,7 @@ class Dashboard extends Component{
                     <br/>
                    <span className="nameHolder"> Welcome {this.props.auth.FirstName+' '+this.props.auth.LastName} </span>
                    
-                    <Image file="" alt='some text'/>
+                    <Image file={proPic} alt='some text'/>
                 {
                     resData.map(function(element,index) {
                         return <Section key={index} notiID={element._id} title={element.Title} desc={element.Description} time={element.NotifyTime}/>

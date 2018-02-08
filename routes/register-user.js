@@ -92,7 +92,7 @@ module.exports = function(app){
     }
    });
 
-   app.get('/fetch/photo',async function(req,res){
+   app.get('/api/fetch/photo',async function(req,res){
        var userID='USER2';
        var result = await Profile.findOne({UserID:userID})
 
