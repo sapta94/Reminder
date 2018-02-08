@@ -49,6 +49,14 @@ export const fetchNoti = () => {
         }
     }
 
+    export const profileImg = () => {
+        
+            return async function(dispatch){
+                const res = await axios.get('/api/fetch/photo')
+                dispatch({type: 'PRO_PIC',payload:res.data})
+            }
+        }
+
 export const insertNoti = ( title, description, notifyTime) => {
     return async function(dispatch){
         const res = await axios({
