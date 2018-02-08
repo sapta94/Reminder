@@ -3,6 +3,7 @@ import * as actions from '../actions'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import Loader from './Loader'
+import Image from 'react-image';
 var moment = require('moment')
 
 class Section extends Component{
@@ -54,6 +55,8 @@ class Dashboard extends Component{
                 <div> 
                     <br/>
                    <span className="nameHolder"> Welcome {this.props.auth.FirstName+' '+this.props.auth.LastName} </span>
+                   
+                    <Image file="" alt='some text'/>
                 {
                     resData.map(function(element,index) {
                         return <Section key={index} notiID={element._id} title={element.Title} desc={element.Description} time={element.NotifyTime}/>
