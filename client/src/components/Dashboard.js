@@ -48,7 +48,8 @@ class Dashboard extends Component{
     render(){
         const notify=this.props.noti;
         const proPic=this.props.proPic;
-        if(notify!=null){
+        console.log(proPic)
+        if(notify!=null && proPic!=null){
             //console.log(notify.data)
             <Loader visible={false} />
             var resData = notify.data;
@@ -57,13 +58,13 @@ class Dashboard extends Component{
                 <div> 
                     <br/>
                    <span className="nameHolder"> Welcome {this.props.auth.FirstName+' '+this.props.auth.LastName} </span>
-                   
-                    <Image file={proPic} alt='some text'/>
+                   <img style={{borderRadius:'50%'}} height="100" width="100" src={"data:image/gif;base64,"+proPic} alt='some text'/>
                 {
                     resData.map(function(element,index) {
                         return <Section key={index} notiID={element._id} title={element.Title} desc={element.Description} time={element.NotifyTime}/>
                     }) 
                 }
+                
                 </div> 
             )
         }
@@ -78,8 +79,8 @@ class Dashboard extends Component{
     }
 }
 
-function mapStateToProps({ auth,noti }) {   
-    return { auth,noti };   
+function mapStateToProps({ auth,noti,proPic }) {   
+    return { auth,noti,proPic };   
   }
   
 export default connect(mapStateToProps,actions)(Dashboard);
