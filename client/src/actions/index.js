@@ -96,3 +96,22 @@ export const updateNoti = ( title,notiID, description, notifyTime) => {
     }
 }
 
+export function uploadDocumentRequest({ file, name }) {  
+    let data = new FormData();
+    data.append('file', file);
+    data.append('name', name);
+
+    return async function(dispatch){
+        const res = await axios({
+                        method: 'post',
+                        url: '/api/photo',
+                        crossDomain: true,
+                        data: data,
+                        xhrFields: {
+                            withCredentials: true
+                        }
+                    });
+        dispatch({type: 'INSERT_IMG',payload:res.data})
+    }
+}
+
