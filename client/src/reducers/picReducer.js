@@ -4,6 +4,8 @@ export default function (state=null,action) {
         case 'PRO_PIC':
             //console.log('PIC is '+action.payload.data)
             return action.payload.data||false
+        case 'INSERT_IMG':
+            return action.payload||false
         default :
             return state
     }
