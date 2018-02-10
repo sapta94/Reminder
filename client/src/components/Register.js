@@ -17,6 +17,7 @@ class Register extends Component{
         }
         this.handleChange=this.handleChange.bind(this)
         this.handleSubmit=this.handleSubmit.bind(this)
+        this.handleFileUpload=this.handleFileUpload.bind(this)
     }
 
     componentDidMount(){
@@ -27,6 +28,16 @@ class Register extends Component{
         const { name, value } = e.target;
         this.setState({ [name]: value });
     }
+
+    handleFileUpload(e) {
+        var file=e.target.files[0];
+        //console.log('val is '+value)
+        //const file = value[0];
+        this.props.uploadDocumentRequest({
+           file,
+           name: 'Profile Pic'
+        })
+      }
 
     handleSubmit(e) {
         e.preventDefault();
@@ -73,11 +84,15 @@ class Register extends Component{
                             <input onChange={this.handleChange} name="email" type="text" className="validate" />
                             <label for="email">Email</label>
                         </div>
-                        <div className="input-field col s6">
+                        <div className="input-field col s4">
+                            <input type="file" onChange={this.handleFileUpload} />
+                            <label for="email">Photo</label>
+                        </div>
+                        <div className="input-field col s4">
                             <input onChange={this.handleChange} name="password" type="password" className="validate" />
                             <label for="last_name">Password</label>
                         </div>
-                        <div className="input-field col s6">
+                        <div className="input-field col s4">
                             <input onChange={this.handleChange} name="confirm" type="password" className="validate" />
                             <label for="last_name">Confirm Password</label>
                         </div>
