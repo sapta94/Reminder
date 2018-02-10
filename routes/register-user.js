@@ -74,7 +74,7 @@ module.exports = function(app){
     var newItem = new Profile({
         UserID:'USER2'
     });
-    console.log(typeof req.files[0].path)
+    console.log(req.files)
     newItem.img.data = fs.readFileSync(req.files[0].path)
     newItem.img.contentType = 'image/png';
     var result=await newItem.save();
