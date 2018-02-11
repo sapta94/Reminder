@@ -25,7 +25,7 @@ export const loginUser = (username,password) => {
                         withCredentials: true
                     }
                 });
-        dispatch({type: 'LOGIN',payload:res.data})
+            dispatch({type: 'LOGIN',payload:res.data})
     }
 }
 

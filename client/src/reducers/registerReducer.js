@@ -14,6 +14,10 @@ export default function (state=null,action) {
              if(action.payload.message=='success'){
                 window.location.href="/reminders"
             }
+            else{
+                alert('Incorrect username or password')
+                window.location.href="/login"
+            }
            return action.payload||false
 
         default :
