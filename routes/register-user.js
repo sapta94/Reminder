@@ -40,13 +40,20 @@ module.exports = function(app){
     })
 
     app.post('/api/login', 
-    passport.authenticate('local', { failureRedirect: '/login' }),
+    passport.authenticate('local', { failureRedirect: '/api/failedLogin' }),
     function(req, res) {
       res.send({
           message:'success',
           data:req.user
       });
     });
+
+   app.get('/api/failedLogin',function(req,res){
+       res.send({
+           status:200,
+           message:'fail'
+       })
+   })
 
   app.get('/api/logout',function(req,res){
     console.log('logout')
