@@ -14,6 +14,7 @@ module.exports = function(app){
         var lastName = req.body.lastname||null;
         var password = req.body.password||null;
         var email = req.body.email||null;
+        var picID = req.body.picID||null;
 
         const existingUser = await User.find().sort({_id:-1}).limit(1);
         if(existingUser){
@@ -30,7 +31,7 @@ module.exports = function(app){
             Password:hash,
             UserID:'USER'+userID
         }).save();
-
+        var updateRes = await Profile.findByIdAndUpdate(picID,{$set:{"UserID":'USER'+userID}},{ new: true })
         //console.log(user)
         res.json({
             status:200,
@@ -72,7 +73,7 @@ module.exports = function(app){
 
   app.post('/api/photo',async function(req,res){
     var newItem = new Profile({
-        UserID:'USER2'
+        UserID:''
     });
     console.log(req.files)
     newItem.img.data = fs.readFileSync(req.files[0].path)
@@ -81,6 +82,7 @@ module.exports = function(app){
     if(result){
         res.json({
             status:200,
+            resData:result._id,
             message:'success'
         })
     }
@@ -93,7 +95,8 @@ module.exports = function(app){
    });
 
    app.get('/api/fetch/photo',async function(req,res){
-       var userID='USER2';
+       var userID=req.user.UserID;
+       console.log(userID)
        var result = await Profile.findOne({UserID:userID})
 
        if(result){
