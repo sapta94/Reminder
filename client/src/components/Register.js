@@ -49,7 +49,7 @@ class Register extends Component{
         }
         console.log(firstname+' '+lastname)
         if (firstname && lastname && password) {
-            this.props.registerUser(firstname, lastname, password,email);
+            this.props.registerUser(firstname, lastname, password,email,this.props.proPic);
         }
     }
 
@@ -105,5 +105,8 @@ class Register extends Component{
     }
 }
 
+function mapStateToProps({ auth,noti,proPic }) {   
+    return { auth,noti,proPic };   
+  }
 
-export default connect (null,actions)(Register);
+export default connect (mapStateToProps,actions)(Register);
