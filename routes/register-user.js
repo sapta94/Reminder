@@ -3,18 +3,37 @@ const User = mongoose.model('Users')
 const Profile=mongoose.model('Profile')
 const bcrypt = require('bcryptjs')
 const fs = require('fs')
+const webpush = require('web-push')
 const passport = require('passport')
 , LocalStrategy = require('passport-local').Strategy;
 
 
 module.exports = function(app){
     /** API to register users */
+    console.log(webpush.generateVAPIDKeys())
+    webpush.setVapidDetails(
+        'mailto:dey7.kol@gmail.com',
+        'BFUl0pKf3ETB9ytnG66al40EfjDP4FS1ago4GGk_8VzLey5ebSOc0nCpt9FdlL7A8x34GwffOyQSElMvftGhyrE',
+        '7k1wiq_UUUEowAq8tYyV_i3KlNtDXtmB6facuNqr430'
+    )
     app.post('/api/register',async function(req,res){
         var firstName = req.body.firstname||null;
         var lastName = req.body.lastname||null;
         var password = req.body.password||null;
         var email = req.body.email||null;
         var picID = req.body.picID||null;
+        var endpoint = req.body.endpoint||null;
+        var authSecret = req.body.authSecret||null;
+
+        const pushSubscription={
+            endpoint:endpoint,
+            keys:{
+                auth:authSecret,
+                p256h:key
+            }
+        }
+        var body="Thanks for Registering"
+        var iconUrl="https://dcassetcdn.com/design_img/2537258/633663/633663_13633192_2537258_9fb8aabd_thumbnail.png"
 
         const existingUser = await User.find().sort({_id:-1}).limit(1);
         if(existingUser){
@@ -32,6 +51,14 @@ module.exports = function(app){
             UserID:'USER'+userID
         }).save();
         var updateRes = await Profile.findByIdAndUpdate(picID,{$set:{"UserID":'USER'+userID}},{ new: true })
+
+        var pushRes = await webpush.sendNotification(pushSubscription,
+            JSON.stringify({
+                msg:body,
+                url:'http://localhost:3000/',
+                icon:iconUrl,
+                type:'register'
+            }))
         //console.log(user)
         res.json({
             status:200,
