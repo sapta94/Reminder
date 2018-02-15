@@ -30,13 +30,17 @@ class Navbar extends React.Component{
         return(
             <nav>
                 <div className="nav-wrapper">
-                    <Link to={this.props.auth?'/survey':'/'}
-                        className="left brand-logo">
-                        RemindMe
-                    </Link>
-                    <ul className="right">
-                       {this.renderContent()}
-                    </ul>
+                        <Link to={this.props.auth?'/survey':'/'}
+                            className="brand-logo">
+                            RemindMe
+                        </Link>
+                        <a href="#" data-activates="mobile-demo" className="button-collapse"><i className="material-icons">menu</i></a>
+                        <ul className="right hide-on-med-and-down">
+                            {this.renderContent()}
+                        </ul>
+                        <ul className="side-nav" id="mobile-demo">
+                            {this.renderContent()}
+                        </ul>
                 </div>
             </nav> 
         )
