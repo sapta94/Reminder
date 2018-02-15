@@ -22,16 +22,16 @@ module.exports = function(app){
         var password = req.body.password||null;
         var email = req.body.email||null;
         var picID = req.body.picID||null;
-        var endpoint = req.body.endpoint||null;
-        var authSecret = req.body.authSecret||null;
+        // var endpoint = req.body.endpoint||null;
+        // var authSecret = req.body.authSecret||null;
 
-        const pushSubscription={
-            endpoint:endpoint,
-            keys:{
-                auth:authSecret,
-                p256h:key
-            }
-        }
+        // const pushSubscription={
+        //     endpoint:endpoint,
+        //     keys:{
+        //         auth:authSecret,
+        //         p256h:key
+        //     }
+        // }
         var body="Thanks for Registering"
         var iconUrl="https://dcassetcdn.com/design_img/2537258/633663/633663_13633192_2537258_9fb8aabd_thumbnail.png"
 
@@ -52,13 +52,13 @@ module.exports = function(app){
         }).save();
         var updateRes = await Profile.findByIdAndUpdate(picID,{$set:{"UserID":'USER'+userID}},{ new: true })
 
-        var pushRes = await webpush.sendNotification(pushSubscription,
-            JSON.stringify({
-                msg:body,
-                url:'http://localhost:3000/',
-                icon:iconUrl,
-                type:'register'
-            }))
+        // var pushRes = await webpush.sendNotification(pushSubscription,
+        //     JSON.stringify({
+        //         msg:body,
+        //         url:'http://localhost:3000/',
+        //         icon:iconUrl,
+        //         type:'register'
+        //     }))
         //console.log(user)
         res.json({
             status:200,
