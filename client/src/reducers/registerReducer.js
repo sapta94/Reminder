@@ -7,6 +7,10 @@ export default function (state=null,action) {
                  alert('Register Successsful')
                  window.location.href="/login"
              }
+             if(action.payload.message=='exists'){
+                 alert('User already exits!')
+                 window.location.reload();
+             }
             return action.payload||false
 
         case 'LOGIN':

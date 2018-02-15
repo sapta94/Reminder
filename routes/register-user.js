@@ -35,6 +35,15 @@ module.exports = function(app){
         var body="Thanks for Registering"
         var iconUrl="https://dcassetcdn.com/design_img/2537258/633663/633663_13633192_2537258_9fb8aabd_thumbnail.png"
 
+        const prevUser = await User.findOne({Email:email})
+        if(prevUser){
+            res.send({
+                status:200,
+                message:'exists'
+            })
+            return
+        }
+
         const existingUser = await User.find().sort({_id:-1}).limit(1);
         if(existingUser){
             console.log(existingUser)
