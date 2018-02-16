@@ -56,9 +56,13 @@ class Dashboard extends Component{
             console.log(resData)
             return(
                 <div> 
-                    <br/>
-                   <span className="nameHolder"> Welcome {this.props.auth.FirstName+' '+this.props.auth.LastName} </span>
-                   <img style={{borderRadius:'50%'}} height="100" width="100" src={"data:image/gif;base64,"+proPic} alt='some text'/>
+                   <div className='col s12'>
+                       <div className="profile">
+                            <img style={{borderRadius:'50%'}} height="100" width="100" src={"data:image/gif;base64,"+proPic} alt='some text'/>
+                            <span className="nameHolder"> Welcome {this.props.auth.FirstName+' '+this.props.auth.LastName} </span>
+                        </div>
+                   </div>
+                   
                 {
                     resData.map(function(element,index) {
                         return <Section key={index} notiID={element._id} title={element.Title} desc={element.Description} time={element.NotifyTime}/>
