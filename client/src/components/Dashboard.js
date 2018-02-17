@@ -4,6 +4,8 @@ import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import Loader from './Loader'
 import Image from 'react-image-file';
+import {CollapsibleComponent, CollapsibleHead, CollapsibleContent} from 'react-collapsible-component'
+
 var moment = require('moment')
 
 class Section extends Component{
@@ -67,11 +69,18 @@ class Dashboard extends Component{
                         </div>
                    </div>
                    
-                {
-                    resData.map(function(element,index) {
-                        return <Section key={index} notiID={element._id} title={element.Title} desc={element.Description} time={element.NotifyTime}/>
-                    }) 
-                }
+                    {
+                        resData.map(function(element,index) {
+                            return <CollapsibleComponent> 
+                                <CollapsibleHead className="additionalClassForHead">{element.Title}</CollapsibleHead>
+                                <CollapsibleContent>
+                                    <p>{element.Description}</p>
+                                </CollapsibleContent>
+                            </CollapsibleComponent>
+                            //return <Section key={index} notiID={element._id} title={element.Title} desc={element.Description} time={element.NotifyTime}/>
+                        }) 
+                    }
+               
                 
                 </div> 
             )
