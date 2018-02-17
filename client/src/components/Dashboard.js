@@ -58,8 +58,12 @@ class Dashboard extends Component{
                 <div> 
                    <div className='col s12'>
                        <div className="profile">
-                            <img style={{borderRadius:'50%'}} height="100" width="100" src={"data:image/gif;base64,"+proPic} alt='some text'/>
-                            <span className="nameHolder"> Welcome {this.props.auth.FirstName+' '+this.props.auth.LastName} </span>
+                            <img style={{borderRadius:'50%',border:'2px solid white' }} height="100" width="100" src={"data:image/gif;base64,"+proPic} alt='some text'/>
+                            <span className="nameHolder">
+                                 Welcome! <br />
+                                 {this.props.auth.FirstName+' '+this.props.auth.LastName} <br />
+                                 {this.props.auth.Email}
+                            </span>
                         </div>
                    </div>
                    
