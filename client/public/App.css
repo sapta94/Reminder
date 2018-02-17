@@ -1,13 +1,13 @@
 .nameHolder {
-  font-size: 20px;
-  background-color: #93ebed;
-  padding: 5px;
-  border: 2px solid #1f7a7c;
-  border-radius: 10px;
-  margin-top: 10px; }
+  font-size: 15px;
+  color: white;
+  position: absolute;
+  left: 25%; }
 
 .profile {
-  background-color: #88abcc;
+  background-color: grey;
+  margin-top: 10px;
   border: 2px solid #114372;
-  border-radius: 2%;
-  margin-top: 3%; }
+  border-radius: 25px;
+  padding-top: 10px;
+  padding-left: 5px; }
