@@ -47,9 +47,14 @@ class Dashboard extends Component{
         //console.log(this.props.noti)
     }
 
+    handleClick(title,desc,time,notiID){
+        window.location.href="/reminder/new?title="+title+"&description="+desc+"&notifyTime="+time+"&notiID="+notiID+"&update=1";
+    }
+
     render(){
         const notify=this.props.noti;
         const proPic=this.props.proPic;
+        var that=this;
         console.log(proPic)
         if(notify!=null && proPic!=null){
             //console.log(notify.data)
@@ -72,7 +77,7 @@ class Dashboard extends Component{
                     {
                         resData.map(function(element,index) {
                             return <CollapsibleComponent> 
-                                <CollapsibleHead className="additionalClassForHead">{element.Title}</CollapsibleHead>
+                                <CollapsibleHead className="additionalClassForHead">{element.Title}<span style={{float:'right'}}><i onClick={()=>that.handleClick(element.Title,element.Description,element.NotifyTime,element._id)} class="fa fa-edit"></i>{'   '}<i class="fa fa-trash"></i></span></CollapsibleHead>
                                 <CollapsibleContent>
                                     <p>{element.Description}</p>
                                 </CollapsibleContent>
