@@ -77,4 +77,22 @@ module.exports = function(app){
             })
         }
     })
+
+    app.post('/api/delete/noti',async function(req,res){
+        var notiID=req.body.notiID;
+
+        var result=await Notification.remove({_id:ObjectID(notiID)})
+        if(result){
+            res.json({
+                status:200,
+                message:'success'
+            })
+        }
+        else{
+            res.json({
+                status:200,
+                message:'fail'
+            })
+        }
+    })
 }
