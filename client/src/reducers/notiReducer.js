@@ -7,7 +7,11 @@ export default function (state=null,action) {
             //     window.location.href='/reminders'
             // }
             return action.payload||false
-
+        case 'INSERT_NOTI':
+            if(action.payload.message=='success'){
+                    window.location.href='/reminders'
+            }
+            return action.payload||false
         default :
             return state
     }
