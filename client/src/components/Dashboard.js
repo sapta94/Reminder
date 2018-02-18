@@ -51,6 +51,12 @@ class Dashboard extends Component{
         window.location.href="/reminder/new?title="+title+"&description="+desc+"&notifyTime="+time+"&notiID="+notiID+"&update=1";
     }
 
+    deleteNoti(notiID){
+        if(window.confirm('Are you sure')){
+            this.props.deleteNoti(notiID)
+        }
+    }
+
     render(){
         const notify=this.props.noti;
         const proPic=this.props.proPic;
@@ -77,7 +83,7 @@ class Dashboard extends Component{
                     {
                         resData.map(function(element,index) {
                             return <CollapsibleComponent> 
-                                <CollapsibleHead className="additionalClassForHead">{element.Title}<span style={{float:'right'}}><i onClick={()=>that.handleClick(element.Title,element.Description,element.NotifyTime,element._id)} class="fa fa-edit"></i>{'   '}<i class="fa fa-trash"></i></span></CollapsibleHead>
+                                <CollapsibleHead className="additionalClassForHead">{element.Title}<span style={{float:'right'}}><i onClick={()=>that.handleClick(element.Title,element.Description,element.NotifyTime,element._id)} class="fa fa-edit"></i>{'   '}<i onClick={()=>that.deleteNoti(element._id)} class="fa fa-trash"></i></span></CollapsibleHead>
                                 <CollapsibleContent>
                                     <p>{element.Description}</p>
                                 </CollapsibleContent>

@@ -116,3 +116,20 @@ export function uploadDocumentRequest({ file, name }) {
     }
 }
 
+export const deleteNoti = (notiID) => {
+    return async function(dispatch){
+        const res = await axios({
+                        method: 'post',
+                        url: '/api/delete/noti',
+                        crossDomain: true,
+                        data: {
+                            notiID:notiID,
+                        },
+                        xhrFields: {
+                            withCredentials: true
+                        }
+                    });
+        dispatch({type: 'DELETE_NOTI',payload:res.data})
+    }
+}
+
