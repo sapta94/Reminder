@@ -73,7 +73,7 @@ export const insertNoti = ( title, description, notifyTime) => {
                             withCredentials: true
                         }
                     });
-        dispatch({type: 'INSER_NOTI',payload:res.data})
+        dispatch({type: 'INSERT_NOTI',payload:res.data})
     }
 }
 

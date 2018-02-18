@@ -54,6 +54,13 @@ class Dashboard extends Component{
     deleteNoti(notiID){
         if(window.confirm('Are you sure')){
             this.props.deleteNoti(notiID)
+            var respData = this.props.deleteNoti;
+            if(respData.message=='success'){
+                this.props.fetchNoti();
+            }
+            else{
+                console.log('async issue bitch')
+            }
         }
     }
 
@@ -107,8 +114,8 @@ class Dashboard extends Component{
     }
 }
 
-function mapStateToProps({ auth,noti,proPic }) {   
-    return { auth,noti,proPic };   
+function mapStateToProps({ auth,noti,proPic,deleteNoti }) {   
+    return { auth,noti,proPic,deleteNoti };   
   }
   
 export default connect(mapStateToProps,actions)(Dashboard);
