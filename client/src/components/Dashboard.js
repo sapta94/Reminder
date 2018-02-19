@@ -5,6 +5,7 @@ import {Link} from 'react-router-dom'
 import Loader from './Loader'
 import Image from 'react-image-file';
 import {CollapsibleComponent, CollapsibleHead, CollapsibleContent} from 'react-collapsible-component'
+import {Collapsible,CollapsibleItem} from 'react-materialize'
 
 var moment = require('moment')
 
@@ -86,18 +87,18 @@ class Dashboard extends Component{
                             </span>
                         </div>
                    </div>
-                   
-                    {
-                        resData.map(function(element,index) {
-                            return <CollapsibleComponent> 
-                                <CollapsibleHead className="additionalClassForHead">{element.Title}<span style={{float:'right'}}><i onClick={()=>that.handleClick(element.Title,element.Description,element.NotifyTime,element._id)} class="fa fa-edit"></i>{'   '}<i onClick={()=>that.deleteNoti(element._id)} class="fa fa-trash"></i></span></CollapsibleHead>
-                                <CollapsibleContent>
-                                    <p>{element.Description}</p>
-                                </CollapsibleContent>
-                            </CollapsibleComponent>
-                            //return <Section key={index} notiID={element._id} title={element.Title} desc={element.Description} time={element.NotifyTime}/>
-                        }) 
-                    }
+                        <Collapsible popout defaultActiveKey={1}>
+                        {
+                            resData.map(function(element,index) {
+                                return (
+                                    <CollapsibleItem key={index} header={element.Title } icon='whatshot'>
+                                        <p>{element.Description}</p>
+                                    </CollapsibleItem>
+                                )
+                                //return <Section key={index} notiID={element._id} title={element.Title} desc={element.Description} time={element.NotifyTime}/>
+                            }) 
+                        }
+                        </Collapsible>
                
                 
                 </div> 
