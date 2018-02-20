@@ -2,6 +2,7 @@ import React,{Component} from 'react'
 import * as actions from '../actions'
 import {connect} from 'react-redux'
 import Loader from './Loader'
+import DatePicker from 'react-datepicker'
 var moment = require('moment')
 
 class Notification extends Component{
@@ -101,8 +102,18 @@ class Notification extends Component{
                             <input onChange={this.handleChange} name="description" value={this.state.description} type="text" className="validate" />
                             <label for="description">Description</label>
                         </div>
-                        <div className="input-field col s6">
-                            <input onChange={this.handleChange} name="notifyTime" value={this.state.notifyTime} type="date" className="validate" />
+                        <div className="col s6">
+                            {/* <input onChange={this.handleChange} name="notifyTime" value={this.state.notifyTime} type="date" className="validate" /> */}
+                            <DatePicker
+                                selected={this.state.notifyTime}
+                                onChange={this.handleChange}
+                                name="notifyTime"
+                                showTimeSelect
+                                timeFormat="HH:mm"
+                                timeIntervals={15}
+                                dateFormat="LLL"
+                                timeCaption="time"
+                            />
                             <label for="notifyTime">Date & Time</label>
                         </div>
                     </div>
