@@ -87,6 +87,8 @@ class Dashboard extends Component{
                             </span>
                         </div>
                    </div>
+                   <div class="noti-container">
+                       <h2>Reminders</h2>
                         <Collapsible popout defaultActiveKey={1}>
                         {
                             resData.map(function(element,index) {
@@ -100,6 +102,7 @@ class Dashboard extends Component{
                             }) 
                         }
                         </Collapsible>
+                    </div>
                
                 
                 </div> 
