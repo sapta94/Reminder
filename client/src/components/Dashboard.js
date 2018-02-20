@@ -92,10 +92,10 @@ class Dashboard extends Component{
                         <Collapsible popout defaultActiveKey={1}>
                         {
                             resData.map(function(element,index) {
-                                var btn=<span style={{float:'right'}}><i onClick={()=>that.handleClick(element.Title,element.Description,element.NotifyTime,element._id)} class="fa fa-edit"></i>{'   '}<i onClick={()=>that.deleteNoti(element._id)} class="fa fa-trash"></i></span>
+                                var btn=<span style={{float:'right',cursor:'pointer'}}><i onClick={()=>that.handleClick(element.Title,element.Description,element.NotifyTime,element._id)} class="fa fa-edit"></i>{'   '}<i onClick={()=>that.deleteNoti(element._id)} class="fa fa-trash"></i></span>
                                 return (
                                     <CollapsibleItem key={index} header={element.Title} icon='whatshot'>
-                                        <p>{element.Description}</p> {btn}
+                                        <p>{element.Description}<br/><i class="fa fa-calendar-check-o" style={{fontSize:'24px'}}></i>{moment.unix(parseInt(element.NotifyTime)/1000).format("DD/MM/YY HH:mm")}</p> {btn}
                                     </CollapsibleItem>
                                 )
                                 //return <Section key={index} notiID={element._id} title={element.Title} desc={element.Description} time={element.NotifyTime}/>
