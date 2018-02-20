@@ -11,3 +11,10 @@
   border-radius: 25px;
   padding-top: 10px;
   padding-left: 5px; }
+
+.noti-container {
+  border: 2px solid #7986cb;
+  border-radius: 25px; }
+  .noti-container h2 {
+    text-align: center;
+    font-weight: bold; }
