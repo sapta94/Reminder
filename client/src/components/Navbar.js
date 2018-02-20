@@ -29,7 +29,7 @@ class Navbar extends React.Component{
     render(){
         return(
             <nav>
-                <div className="nav-wrapper">
+                <div className="nav-wrapper indigo">
                         <Link to={this.props.auth?'/survey':'/'}
                             className="brand-logo">
                             RemindMe
