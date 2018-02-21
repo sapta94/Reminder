@@ -103,17 +103,7 @@ class Notification extends Component{
                             <label for="description">Description</label>
                         </div>
                         <div className="col s6">
-                            {/* <input onChange={this.handleChange} name="notifyTime" value={this.state.notifyTime} type="date" className="validate" /> */}
-                            <DatePicker
-                                selected={this.state.notifyTime}
-                                onChange={this.handleChange}
-                                name="notifyTime"
-                                showTimeSelect
-                                timeFormat="HH:mm"
-                                timeIntervals={15}
-                                dateFormat="LLL"
-                                timeCaption="time"
-                            />
+                            <input onChange={this.handleChange} name="notifyTime" value={this.state.notifyTime} type="datetime-local" className="validate" />
                             <label for="notifyTime">Date & Time</label>
                         </div>
                     </div>
