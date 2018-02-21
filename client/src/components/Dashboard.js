@@ -69,7 +69,7 @@ class Dashboard extends Component{
         const notify=this.props.noti;
         const proPic=this.props.proPic;
         var that=this;
-        console.log(proPic)
+        var status=<span><b>Status:{'  '}</b><i class="fa fa-circle" style={{fontSize:'12px',color:'#08dd08'}}></i>{' '}Active</span>
         if(notify!=null && proPic!=null){
             //console.log(notify.data)
             <Loader visible={false} />
@@ -93,8 +93,10 @@ class Dashboard extends Component{
                         {
                             resData.map(function(element,index) {
                                 var btn=<span style={{float:'right',cursor:'pointer'}}><i onClick={()=>that.handleClick(element.Title,element.Description,element.NotifyTime,element._id)} class="fa fa-edit"></i>{'   '}<i onClick={()=>that.deleteNoti(element._id)} class="fa fa-trash"></i></span>
+                                
                                 return (
-                                    <CollapsibleItem key={index} header={element.Title} icon='whatshot'>
+                                    <CollapsibleItem key={index} header={element.Title}  icon='whatshot'>
+                                        {status}
                                         <p>{element.Description}<br/><i class="fa fa-calendar-check-o" style={{fontSize:'24px'}}></i>{moment.unix(parseInt(element.NotifyTime)/1000).format("DD/MM/YY HH:mm")}</p> {btn}
                                     </CollapsibleItem>
                                 )
