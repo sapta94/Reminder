@@ -52,14 +52,18 @@ class Dashboard extends Component{
         window.location.href="/reminder/new?title="+title+"&description="+desc+"&notifyTime="+time+"&notiID="+notiID+"&update=1";
     }
 
+    
+
     deleteNoti(notiID){
         if(window.confirm('Are you sure')){
             this.props.deleteNoti(notiID)
             var respData = this.props.deleteNoti;
+            console.log('response is '+respData)
             if(respData.message=='success'){
                 this.props.fetchNoti();
             }
             else{
+                this.props.fetchNoti();
                 console.log('async issue bitch')
             }
         }
