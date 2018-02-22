@@ -7,7 +7,8 @@ const notiSchema = new Schema({
     Description: String,
     UserID: String,
     CreateTime: Number,
-    NotifyTime:Number
+    NotifyTime:Number,
+    Status:String
 });
 
 mongoose.model('Notification',notiSchema)
