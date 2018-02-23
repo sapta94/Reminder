@@ -16,7 +16,8 @@ module.exports = function(app){
             Description:description,
             CreateTime:createTime,
             NotifyTime:notifyTime,
-            UserID:userID
+            UserID:userID,
+            Status:'Active'
         }).save();
 
         if(!notify){
@@ -61,7 +62,7 @@ module.exports = function(app){
         var description=req.body.description||null
         var notifyTime=req.body.notifyTime||null
 
-        var updateRes = await Notification.findByIdAndUpdate(notiID,{$set:{"Title":title,"Description":description,"NotifyTime":notifyTime}},{ new: true })
+        var updateRes = await Notification.findByIdAndUpdate(notiID,{$set:{"Title":title,"Description":description,"NotifyTime":notifyTime,"Status":'active'}},{ new: true })
         //var updateRes = await Notification.findOne({"_id":ObjectID(notiID)});
         if(updateRes){
             res.json({
