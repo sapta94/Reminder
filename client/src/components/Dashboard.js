@@ -100,19 +100,22 @@ class Dashboard extends Component{
                                 if(element.Status=='active'){
                                     var status='Active'
                                     var color = '#08dd08'
+                                    var updater = <button class="theme-btn">Disable</button>
                                 }
                                 else if(element.Status=='disabled')
                                 {
                                     var status = 'Disabled'
                                     var color = 'yellow'
+                                    var updater = <button class="theme-btn">Enable</button>
                                 }
                                 else {
                                     var status = 'Expired'
                                     var color = 'red'
+                                    var updater = <button class="theme-btn"></button>
                                 }
                                 return (
                                     <CollapsibleItem key={index} header={element.Title}  icon='whatshot'>
-                                        <span><b>Status:{'  '}</b><i class="fa fa-circle" style={{fontSize:'12px',color:color}}></i>{' '}{status}</span>
+                                        <span><b>Status:{'  '}</b><i class="fa fa-circle" style={{fontSize:'12px',color:color}}></i>{' '}{status}</span>{'  '}{updater}
                                         <p>{element.Description}<br/><i class="fa fa-calendar-check-o" style={{fontSize:'24px'}}></i>{moment.unix(parseInt(element.NotifyTime)/1000).format("DD/MM/YY HH:mm")}</p> {btn}
                                     </CollapsibleItem>
                                 )
