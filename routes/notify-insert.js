@@ -61,6 +61,7 @@ module.exports = function(app){
         var title = req.body.title||null
         var description=req.body.description||null
         var notifyTime=req.body.notifyTime||null
+        var status = req.body.status||'active';
 
         var updateRes = await Notification.findByIdAndUpdate(notiID,{$set:{"Title":title,"Description":description,"NotifyTime":notifyTime,"Status":'active'}},{ new: true })
         //var updateRes = await Notification.findOne({"_id":ObjectID(notiID)});
