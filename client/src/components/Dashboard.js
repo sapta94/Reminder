@@ -65,20 +65,20 @@ class Dashboard extends Component{
             else{
                 this.props.fetchNoti();
                 console.log('async issue bitch')
-            }
+            } 
         }
     }
 
     render(){
         const notify=this.props.noti;
         const proPic=this.props.proPic;
-        var that=this;
-        var status=<span><b>Status:{'  '}</b><i class="fa fa-circle" style={{fontSize:'12px',color:'#08dd08'}}></i>{' '}Active</span>
+        var that=this;    
         if(notify!=null && proPic!=null){
             //console.log(notify.data)
             <Loader visible={false} />
             var resData = notify.data;
-            console.log(resData)
+            console.log(resData.Status)
+            
             return(
                 <div> 
                    <div className='col s12'>
@@ -97,10 +97,22 @@ class Dashboard extends Component{
                         {
                             resData.map(function(element,index) {
                                 var btn=<span style={{float:'right',cursor:'pointer'}}><i onClick={()=>that.handleClick(element.Title,element.Description,element.NotifyTime,element._id)} class="fa fa-edit"></i>{'   '}<i onClick={()=>that.deleteNoti(element._id)} class="fa fa-trash"></i></span>
-                                
+                                if(element.Status=='active'){
+                                    var status='Active'
+                                    var color = '#08dd08'
+                                }
+                                else if(element.Status=='disabled')
+                                {
+                                    var status = 'Disabled'
+                                    var color = 'yellow'
+                                }
+                                else {
+                                    var status = 'Expired'
+                                    var color = 'red'
+                                }
                                 return (
                                     <CollapsibleItem key={index} header={element.Title}  icon='whatshot'>
-                                        {status}
+                                        <span><b>Status:{'  '}</b><i class="fa fa-circle" style={{fontSize:'12px',color:color}}></i>{' '}{status}</span>
                                         <p>{element.Description}<br/><i class="fa fa-calendar-check-o" style={{fontSize:'24px'}}></i>{moment.unix(parseInt(element.NotifyTime)/1000).format("DD/MM/YY HH:mm")}</p> {btn}
                                     </CollapsibleItem>
                                 )
