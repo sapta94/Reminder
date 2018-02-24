@@ -77,7 +77,7 @@ export const insertNoti = ( title, description, notifyTime) => {
     }
 }
 
-export const updateNoti = ( title,notiID, description, notifyTime) => {
+export const updateNoti = ( title,notiID, description, notifyTime, status) => {
     return async function(dispatch){
         const res = await axios({
                         method: 'post',
@@ -87,7 +87,8 @@ export const updateNoti = ( title,notiID, description, notifyTime) => {
                             notiID:notiID,
                             title: title,
                             description: description,
-                            notifyTime:notifyTime
+                            notifyTime:notifyTime,
+                            status:status
                         },
                         xhrFields: {
                             withCredentials: true
