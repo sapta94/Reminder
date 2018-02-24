@@ -111,7 +111,7 @@ class Dashboard extends Component{
                                 else {
                                     var status = 'Expired'
                                     var color = 'red'
-                                    var updater = <button class="theme-btn"></button>
+                                    var updater = <div></div>
                                 }
                                 return (
                                     <CollapsibleItem key={index} header={element.Title}  icon='whatshot'>
