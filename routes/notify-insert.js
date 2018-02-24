@@ -97,4 +97,25 @@ module.exports = function(app){
             })
         }
     })
+
+    app.post('/api/expire/noti',async function(req,res){
+        var dateNow=Date.now();
+        console.log('date '+dateNow)
+        var updateRes = await Notification.update({NotifyTime:{ $lt : dateNow}},{Status:'expired'},{ multi: true })
+        //var updateRes=await Notification.find({NotifyTime:{$lt:dateNow}})
+        if(updateRes){
+            res.json({
+                status:200,
+                message:'success',
+                data:updateRes
+            })
+        }
+        else{
+            res.json({
+                status:200,
+                message:'fail',
+
+            })
+        }
+    })
 }
