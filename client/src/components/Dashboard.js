@@ -100,13 +100,13 @@ class Dashboard extends Component{
                                 if(element.Status=='active'){
                                     var status='Active'
                                     var color = '#08dd08'
-                                    var updater = <button class="theme-btn">Disable</button>
+                                    var updater = <button onClick={()=>that.props.updateNoti(element.Title,element._id,element.Description,element.NotifyTime,'disabled')} class="theme-btn">Disable</button>
                                 }
                                 else if(element.Status=='disabled')
                                 {
                                     var status = 'Disabled'
                                     var color = 'yellow'
-                                    var updater = <button class="theme-btn">Enable</button>
+                                    var updater = <button onClick={()=>that.props.updateNoti(element.Title,element._id,element.Description,element.NotifyTime,'active')} class="theme-btn">Enable</button>
                                 }
                                 else {
                                     var status = 'Expired'
