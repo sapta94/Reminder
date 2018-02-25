@@ -2,7 +2,6 @@ import React,{Component} from 'react'
 import * as actions from '../actions'
 import {connect} from 'react-redux'
 import Loader from './Loader'
-import DatePicker from 'react-datepicker'
 var moment = require('moment')
 
 class Notification extends Component{
@@ -63,7 +62,7 @@ class Notification extends Component{
         var notiID = this.getQueryString('notiID')||''
         var prevNotifyTime=parseInt(this.getQueryString('notifyTime'))||''
         console.log(prevNotifyTime)
-        var dateStr= moment.unix((prevNotifyTime)/1000).format("YYYY-MM-DD");
+        var dateStr= moment.unix((prevNotifyTime)/1000).format("DD-MM-YYYY hh:mm");
         this.setState({
             notiID:notiID,
             title:prevTitle,
@@ -103,7 +102,7 @@ class Notification extends Component{
                             <label for="description">Description</label>
                         </div>
                         <div className="col s6">
-                            <input onChange={this.handleChange} name="notifyTime" value={this.state.notifyTime} type="datetime-local" className="validate" />
+                            <input onChange={this.handleChange} name="notifyTime" value={this.state.notifyTime} type="datetime-local" className="validate" /> 
                             <label for="notifyTime">Date & Time</label>
                         </div>
                     </div>
