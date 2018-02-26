@@ -76,6 +76,31 @@ module.exports = function(app){
         })
     })
 
+    app.post('/api/updateUser',async function(req,res){
+        var firstName = req.body.firstname||req.user.FirstName;
+        var lastName = req.body.lastname||req.user.LastName;
+        //var password = req.body.password||req.user;
+        var email = req.body.email||req.user;
+        var picID = req.body.picID||null;
+
+        var result = User.findByIdAndUpdate(req._id,{FirstName:firstName,LastName:lastName,Email:email},{new:true})
+
+        if(result){
+            res.json({
+                status:200,
+                message:'success'
+            })
+        }
+        else{
+            res.json({
+                status:200,
+                message:'fail'
+            })
+        }
+
+
+    })
+
     app.post('/api/login', 
     passport.authenticate('local', { failureRedirect: '/api/failedLogin' }),
     function(req, res) {

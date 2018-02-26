@@ -29,7 +29,7 @@ class Navbars extends React.Component{
     } 
     render(){
         return(
-            <Navbar brand='RemindME' right>
+            <Navbar brand='RemindME' color="indigo" right>
                {this.renderContent()}
             </Navbar>
             // <nav>
