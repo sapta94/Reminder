@@ -2,6 +2,7 @@ import React,{Component} from 'react'
 import * as actions from '../actions'
 import {connect} from 'react-redux'
 import Loader from './Loader'
+
 var moment = require('moment')
 
 class Notification extends Component{

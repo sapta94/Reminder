@@ -3,7 +3,7 @@ import {BrowserRouter,Route} from 'react-router-dom'
 import {connect} from 'react-redux'
 import * as actions from '../actions'
 
-import Navbar from './Navbar'
+import Navbars from './Navbar'
 import Login from './Login'
 import Landing from './Landing'
 import Register from './Register'
@@ -21,7 +21,7 @@ class App extends Component{
             <div className="container">
             <BrowserRouter>
                     <div>
-                        <Navbar />
+                        <Navbars />
                         <Route exact path="/" component={Landing} />
                         <Route exact path="/login" component={Login} />
                         <Route exact path="/reminders" component={Dashboard} />
