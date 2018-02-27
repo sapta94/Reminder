@@ -87,7 +87,8 @@ class Dashboard extends Component{
                             <span className="nameHolder">
                                  Welcome! <br />
                                  {this.props.auth.FirstName+' '+this.props.auth.LastName} <br />
-                                 {this.props.auth.Email}
+                                 {this.props.auth.Email} <br />
+                                 <i onClick={()=>window.location.href="/profile?firstName="+this.props.auth.FirstName+"&lastName="+this.props.auth.LastName+"&email="+this.props.auth.Email} class="fa fa-edit"></i>
                             </span>
                         </div>
                    </div>
