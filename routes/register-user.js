@@ -83,7 +83,7 @@ module.exports = function(app){
         var email = req.body.email||req.user;
         var picID = req.body.picID||null;
 
-        var result = User.findByIdAndUpdate(req._id,{FirstName:firstName,LastName:lastName,Email:email},{new:true})
+        var result =await User.findByIdAndUpdate(req._id,{FirstName:firstName,LastName:lastName,Email:email},{new:true})
 
         if(result){
             res.json({
