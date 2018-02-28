@@ -17,7 +17,7 @@ class Profile extends Component{
     }
 
     componentWillMount(){
-        //this.props.profileImg()
+        this.props.profileImg()
         this.setState({
             user:this.props.auth,
             firstName:this.getQueryString('firstName'),
@@ -37,6 +37,7 @@ class Profile extends Component{
             <div className="row">
                 <div className="col s4 offset-s4">
                 <Collection>
+                    <CollectionItem><img style={{borderRadius:'50%',border:'2px solid white',marginLeft:'' }} height="200" width="200" src={"data:image/gif;base64,"+this.props.proPic} alt='some text'/></CollectionItem>
                     <CollectionItem>{this.state.firstName}</CollectionItem>
                     <CollectionItem>{this.state.lastName}</CollectionItem>
                     <CollectionItem>{this.state.email}</CollectionItem>
@@ -52,4 +53,4 @@ function mapStateToProps({ auth,proPic }) {
     return { auth,proPic };   
   }
   
-export default connect(mapStateToProps)(Profile); 
+export default connect(mapStateToProps,actions)(Profile); 
