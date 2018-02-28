@@ -33,11 +33,17 @@ class Profile extends Component{
 
     render(){
         console.log(this.state.data)
+        if(this.props.proPic){
+            var btn = <img style={{borderRadius:'50%',border:'2px solid white',marginLeft:'' }} height="200" width="200" src={"data:image/gif;base64,"+this.props.proPic} alt='some text'/>
+        }
+        else{
+            var btn=<span>Loading image <i className="fa fa-spinner fa-spin" style={{fontSize:'18px'}}></i></span>
+        }
         return(
             <div className="row">
                 <div className="col s4 offset-s4">
                 <Collection>
-                    <CollectionItem><img style={{borderRadius:'50%',border:'2px solid white',marginLeft:'' }} height="200" width="200" src={"data:image/gif;base64,"+this.props.proPic} alt='some text'/></CollectionItem>
+                    <CollectionItem>{btn}</CollectionItem>
                     <CollectionItem>{this.state.firstName}</CollectionItem>
                     <CollectionItem>{this.state.lastName}</CollectionItem>
                     <CollectionItem>{this.state.email}</CollectionItem>
